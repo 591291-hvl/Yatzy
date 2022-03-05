@@ -21,13 +21,18 @@ public class Dice {
         this.locked = false;
     }
 
+    public int getValue() {
+        return value;
+    }
+
     /**
      * rolls a 6 sided dice
      *
      * @return int
      */
     public int roll() {
-        return random.nextInt(6) + 1;
+        this.value = random.nextInt(6) + 1;
+        return value;
     }
 
     /**
