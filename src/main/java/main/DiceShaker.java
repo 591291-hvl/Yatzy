@@ -61,4 +61,15 @@ public class DiceShaker {
             shaker[i].unlock();
         }
     }
+
+    /**
+     * Resets dices -> dices back in shaker
+     * locked -> false, value -> -1
+     */
+    public void reset(){
+        for (int i = 0; i < numberOfDices; i = -~i) {
+            shaker[i].unlock();
+            shaker[i].setValue(-1);
+        }
+    }
 }

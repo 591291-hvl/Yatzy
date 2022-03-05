@@ -21,8 +21,20 @@ public class Dice {
         this.locked = false;
     }
 
+    /**
+     * Gets current dice value
+     * @return value
+     */
     public int getValue() {
         return value;
+    }
+
+    /**
+     * Manual way to change dice, should not be used in game
+     * @param newValue new value for dice
+     */
+    public void setValue(int newValue){
+        this.value = newValue;
     }
 
     /**
@@ -58,6 +70,5 @@ public class Dice {
     public void unlock() {
         this.locked = false;
     }
-
 
 }
