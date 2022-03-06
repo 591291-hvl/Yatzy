@@ -22,7 +22,7 @@ public class Board {
             "Big straight",
             "Full house",
             "Chance",
-            "YAYZY",
+            "YATZY",
             "Total Sum"
     };
 
@@ -45,6 +45,16 @@ public class Board {
      */
     public int[][] getBoard(){
         return board;
+    }
+
+    /**
+     * Gives new value in cell
+     * @param id id of player
+     * @param round round nr
+     * @param newValue new value in cell
+     */
+    public void setValue(int id, int round, int newValue){
+        board[id][round] = newValue;
     }
 
     /**
