@@ -93,8 +93,9 @@ public class Yatzy {
 
     /**
      * Play one round, each player gets to play
+     * @param round round number
      */
-    public void playOneRound() {
+    public void playOneRound(int round) {
 
         for (int i = 0; i < numberOfPlayers; i = -~i) {
             //play round
@@ -102,7 +103,7 @@ public class Yatzy {
 
             //logic method
             //needs id and round as parameter
-
+            gameLogic(i, round, diceValues);
 
             //display
             display();
@@ -111,19 +112,52 @@ public class Yatzy {
 
     public void playGame() {
         //rounds to play 6 + 9
-        for (int i = 0; i < 6; i = -~i) {
-            playOneRound();
+        for (int i = 1; i <= 6; i = -~i) {
+            playOneRound(i);
         }
     }
 
     /**
      * Performs game logic -> values into board
-     * @param id player id
+     *
+     * @param id    player id
      * @param round round nr
      * @param dices array of dice values
      */
     public void gameLogic(int id, int round, int[] dices) {
+        board.setValue(id,round-1,roundSwitch(round, dices));
 
+
+    }
+
+    public int roundSwitch(int round, int[] dices) {
+        int value = 0;
+
+        switch (round) {
+            case 1:
+                value = RoundUtils.ones(dices);
+                break;
+            case 2:
+                value = RoundUtils.twoes(dices);
+                break;
+            case 3:
+                value = RoundUtils.threes(dices);
+                break;
+            case 4:
+                value = RoundUtils.fours(dices);
+                break;
+            case 5:
+                value = RoundUtils.fives(dices);
+                break;
+            case 6:
+                value = RoundUtils.sixes(dices);
+                break;
+            default:
+                value = -1;
+                //should send error, invalid value
+                System.out.println("Invalid value");
+        }
+        return value;
     }
 
 

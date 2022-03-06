@@ -1,7 +1,6 @@
 package main;
 
-import java.util.Arrays;
-import java.util.stream.Stream;
+
 
 /**
  * Game logic for each round
@@ -9,28 +8,64 @@ import java.util.stream.Stream;
  */
 public class RoundUtils {
 
-    public int roundOne(int[] dices){
-        return 1*(int) Stream.of(dices).filter(x -> x.equals(1)).count();
+    public static int ones(int[] dices) {
+        int sum = 0;
+        for (int i = 0; i < dices.length; i = -~i) {
+            if (dices[i] == 1) {
+                sum = -~sum;
+            }
+        }
+        return 1 * sum;
     }
 
-    public int roundTwo(int[] dices){
-        return 2*(int) Stream.of(dices).filter(x -> x.equals(2)).count();
+    public static int twoes(int[] dices) {
+        int sum = 0;
+        for (int i = 0; i < dices.length; i = -~i) {
+            if (dices[i] == 2) {
+                sum = -~sum;
+            }
+        }
+        return 2 * sum;
     }
 
-    public int roundThree(int[] dices){
-        return 3*(int) Stream.of(dices).filter(x -> x.equals(3)).count();
+    public static int threes(int[] dices) {
+        int sum = 0;
+        for (int i = 0; i < dices.length; i = -~i) {
+            if (dices[i] == 3) {
+                sum = -~sum;
+            }
+        }
+        return 3 * sum;
     }
 
-    public int roundFour(int[] dices){
-        return 4*(int) Stream.of(dices).filter(x -> x.equals(4)).count();
+    public static int fours(int[] dices) {
+        int sum = 0;
+        for (int i = 0; i < dices.length; i = -~i) {
+            if (dices[i] == 4) {
+                sum = -~sum;
+            }
+        }
+        return 4 * sum;
     }
 
-    public int roundFive(int[] dices){
-        return 5*(int) Stream.of(dices).filter(x -> x.equals(5)).count();
+    public static int fives(int[] dices) {
+        int sum = 0;
+        for (int i = 0; i < dices.length; i = -~i) {
+            if (dices[i] == 5) {
+                sum = -~sum;
+            }
+        }
+        return 5 * sum;
     }
 
-    public int roundSix(int[] dices){
-        return 6*(int) Stream.of(dices).filter(x -> x.equals(6)).count();
+    public static int sixes(int[] dices) {
+        int sum = 0;
+        for (int i = 0; i < dices.length; i = -~i) {
+            if (dices[i] == 6) {
+                sum = -~sum;
+            }
+        }
+        return 6 * sum;
     }
 
 }
