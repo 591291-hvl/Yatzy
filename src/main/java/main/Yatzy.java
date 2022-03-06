@@ -127,7 +127,6 @@ public class Yatzy {
     public void gameLogic(int id, int round, int[] dices) {
         board.setValue(id,round-1,roundSwitch(round, dices));
 
-
     }
 
     public int roundSwitch(int round, int[] dices) {
