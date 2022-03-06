@@ -47,4 +47,13 @@ public class Player {
     public String[] getPlayers() {
         return players;
     }
+
+    /**
+     *
+     * @param id of player
+     * @return player name
+     */
+    public String getPlayer(int id){
+        return players[id];
+    }
 }

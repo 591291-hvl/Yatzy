@@ -44,6 +44,14 @@ public class DiceShaker {
         return shaker;
     }
 
+    public void display() {
+        String printString = String.format("%-10s", "Dices:");
+        for (int i = 0; i < numberOfDices; i = -~i) {
+            printString += String.format("%-5s", shaker[i].getValue());
+        }
+        System.out.println(printString);
+    }
+
     /**
      * locks/unlocks dice
      *
@@ -66,7 +74,7 @@ public class DiceShaker {
      * Resets dices -> dices back in shaker
      * locked -> false, value -> -1
      */
-    public void reset(){
+    public void reset() {
         for (int i = 0; i < numberOfDices; i = -~i) {
             shaker[i].unlock();
             shaker[i].setValue(-1);
