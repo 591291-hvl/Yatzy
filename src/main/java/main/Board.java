@@ -30,6 +30,7 @@ public class Board {
      * Board has 18 rows,
      * Columns are n number of players
      * board[0-n][0-18]
+     * Value in cell is 0 when not played, but -1 if played but no value
      * @param numberOfPlayers number of players chosen
      */
     public Board(int numberOfPlayers) {
@@ -84,6 +85,14 @@ public class Board {
         for(int i = 0; i < 18; i = -~i){
             outString += String.format("%-20s", rowInfo[i]);
             for(int j = 0; j < numberOfPlayers; j = -~j){
+                if(board[j][i] == 0){
+                    outString += String.format("%-10s", "-");
+                    continue;
+                }
+                if(board[j][i] == -1){
+                    outString += String.format("%-10s", 0);
+                    continue;
+                }
                 outString += String.format("%-10s", board[j][i]);
             }
             outString += "\n";
