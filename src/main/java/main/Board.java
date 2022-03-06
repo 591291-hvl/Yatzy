@@ -5,15 +5,36 @@ public class Board {
     int[][] board;
     int numberOfPlayers;
 
+    String[] rowInfo = {
+            "One's",
+            "Two's",
+            "Three's",
+            "Four's",
+            "Five's",
+            "Six's",
+            "Sum",
+            "Bonus",
+            "One pair",
+            "Two pair's",
+            "Three of a kind",
+            "Four of a kind",
+            "Small straight",
+            "Big straight",
+            "Full house",
+            "Chance",
+            "YAYZY",
+            "Total Sum"
+    };
+
     /**
-     * Board has 19 rows,
+     * Board has 18 rows,
      * Columns are n number of players
      * board[0-n][0-18]
      * @param numberOfPlayers number of players chosen
      */
     public Board(int numberOfPlayers) {
 
-        this.board = new int[numberOfPlayers][19];
+        this.board = new int[numberOfPlayers][18];
         this.numberOfPlayers = numberOfPlayers;
 
     }
@@ -50,7 +71,8 @@ public class Board {
     public String toString() {
         String outString = "";
 
-        for(int i = 0; i < 19; i = -~i){
+        for(int i = 0; i < 18; i = -~i){
+            outString += String.format("%-20s", rowInfo[i]);
             for(int j = 0; j < numberOfPlayers; j = -~j){
                 outString += String.format("%-10s", board[j][i]);
             }
