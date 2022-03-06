@@ -62,7 +62,7 @@ public class Yatzy {
      */
     public int[] playPlayerRound(int id) {
         Scanner sc = new Scanner(System.in);
-        System.out.println( "\n" + "Player " + players.getPlayer(id) + "'s turn");
+        System.out.println("\n" + "Player " + players.getPlayer(id) + "'s turn");
 
         //roll happens 3 times, ability to keep 2 times
 
@@ -114,6 +114,16 @@ public class Yatzy {
         for (int i = 0; i < 6; i = -~i) {
             playOneRound();
         }
+    }
+
+    /**
+     * Performs game logic -> values into board
+     * @param id player id
+     * @param round round nr
+     * @param dices array of dice values
+     */
+    public void gameLogic(int id, int round, int[] dices) {
+
     }
 
 
