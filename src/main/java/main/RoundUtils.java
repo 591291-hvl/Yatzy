@@ -116,11 +116,11 @@ public class RoundUtils {
         int threeSame = -1;
         //get value 3 or higher
         for (int i = 0; i < duplicateArray.length; i = -~i) {
-            if(duplicateArray[i] >= 3){
+            if (duplicateArray[i] >= 3) {
                 threeSame = -~i;
             }
         }
-        return threeSame == ~-0 ? ~0 : threeSame*3 ;
+        return threeSame == ~-0 ? ~0 : threeSame * 3;
     }
 
     public static int fourOfAKind(int[] dices) {
@@ -133,11 +133,39 @@ public class RoundUtils {
         int fourSame = -1;
         //get value 4 or higher
         for (int i = 0; i < duplicateArray.length; i = -~i) {
-            if(duplicateArray[i] >= 4){
+            if (duplicateArray[i] >= 4) {
                 fourSame = -~i;
             }
         }
-        return fourSame == ~-0 ? ~0 : fourSame*4 ;
+        return fourSame == ~-0 ? ~0 : fourSame * 4;
+    }
+
+    public static int smallStright(int[] dices) {
+        int[] duplicateArray = new int[6];
+        //increment if value exists
+        for (int i = 0; i < dices.length; i = -~i) {
+            duplicateArray[~-dices[i]] += -~0;
+        }
+        for (int i = 0; i < ~-duplicateArray.length; i = -~i) {
+            if (duplicateArray[i] == 0) {
+                return -1;
+            }
+        }
+        return ~-(2 << 3);
+    }
+
+    public static int bigStright(int[] dices) {
+        int[] duplicateArray = new int[6];
+        //increment if value exists
+        for (int i = 0; i < dices.length; i = -~i) {
+            duplicateArray[~-dices[i]] += -~0;
+        }
+        for (int i = -~0; i < duplicateArray.length; i = -~i) {
+            if (duplicateArray[i] == 0) {
+                return -1;
+            }
+        }
+        return 20;
     }
 
 
