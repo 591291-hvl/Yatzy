@@ -58,10 +58,11 @@ public class Yatzy {
      * Plays round for one player
      *
      * @param id player id
+     * @return int[] dice values
      */
-    public void playPlayerRound(int id) {
+    public int[] playPlayerRound(int id) {
         Scanner sc = new Scanner(System.in);
-        System.out.println("Player " + players.getPlayer(id) + "'s turn");
+        System.out.println( "\n" + "Player " + players.getPlayer(id) + "'s turn");
 
         //roll happens 3 times, ability to keep 2 times
 
@@ -83,9 +84,11 @@ public class Yatzy {
         shaker.display();
 
         //store value
+        int[] diceValues = Stream.of(shaker.getDices()).mapToInt(a -> a.getValue()).toArray();
 
-        //dice back in shaker
+        //dices back in shaker
         shaker.reset();
+        return diceValues;
     }
 
     /**
@@ -94,7 +97,15 @@ public class Yatzy {
     public void playOneRound() {
 
         for (int i = 0; i < numberOfPlayers; i = -~i) {
-            playPlayerRound(i);
+            //play round
+            int[] diceValues = playPlayerRound(i);
+
+            //logic method
+            //needs id and round as parameter
+
+
+            //display
+            display();
         }
     }
 
