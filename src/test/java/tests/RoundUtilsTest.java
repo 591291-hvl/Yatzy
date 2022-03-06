@@ -122,8 +122,33 @@ public class RoundUtilsTest {
 		dices[2] = 1;
 		assertEquals(RoundUtils.twoPairs(dices),(4<<1) + (1<<1));
 		dices[3] = 1;
-		assertEquals(RoundUtils.twoPairs(dices),-1);
+		assertEquals(RoundUtils.twoPairs(dices),~0);
 
+	}
+
+	@Test
+	public void testThreeOfAKind() {
+
+		int[] dices = {1,1,1,4,4};
+		assertEquals(RoundUtils.threeOfAKind(dices),1*3);
+		dices[2] = 4;
+		assertEquals(RoundUtils.threeOfAKind(dices),4*3);
+		dices[1] = 4;
+		assertEquals(RoundUtils.threeOfAKind(dices),4*3);
+		dices[1] = 1;
+		dices[2] = 3;
+		assertEquals(RoundUtils.threeOfAKind(dices),~0);
+
+
+	}
+
+	@Test
+	public void testFourOfAKind() {
+
+		int[] dices = {1,1,1,4,4};
+		assertEquals(RoundUtils.fourOfAKind(dices),~0);
+		dices[3] = 1;
+		assertEquals(RoundUtils.fourOfAKind(dices),1*4);
 
 
 	}

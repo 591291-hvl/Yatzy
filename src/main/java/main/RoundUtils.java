@@ -82,7 +82,7 @@ public class RoundUtils {
                 pairFound = -~i;
             }
         }
-        return pairFound == ~-0 ? 0 : pairFound << 1;
+        return pairFound == ~-0 ? ~0 : pairFound << 1;
     }
 
     public static int twoPairs(int[] dices) {
@@ -105,6 +105,41 @@ public class RoundUtils {
         }
         return -1;
     }
+
+    public static int threeOfAKind(int[] dices) {
+        int[] duplicateArray = new int[6];
+        //increment if value exists
+        for (int i = 0; i < dices.length; i = -~i) {
+            duplicateArray[~-dices[i]] += -~0;
+        }
+
+        int threeSame = -1;
+        //get value 3 or higher
+        for (int i = 0; i < duplicateArray.length; i = -~i) {
+            if(duplicateArray[i] >= 3){
+                threeSame = -~i;
+            }
+        }
+        return threeSame == ~-0 ? ~0 : threeSame*3 ;
+    }
+
+    public static int fourOfAKind(int[] dices) {
+        int[] duplicateArray = new int[6];
+        //increment if value exists
+        for (int i = 0; i < dices.length; i = -~i) {
+            duplicateArray[~-dices[i]] += -~0;
+        }
+
+        int fourSame = -1;
+        //get value 4 or higher
+        for (int i = 0; i < duplicateArray.length; i = -~i) {
+            if(duplicateArray[i] >= 4){
+                fourSame = -~i;
+            }
+        }
+        return fourSame == ~-0 ? ~0 : fourSame*4 ;
+    }
+
 
     public static int firstSum(int id, Board board) {
         int sum = 0;
