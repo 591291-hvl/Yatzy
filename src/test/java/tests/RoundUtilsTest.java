@@ -99,6 +99,37 @@ public class RoundUtilsTest {
 		assertEquals(RoundUtils.sixes(dices),5*6);
 	}
 
+	@Test
+	public void testOnePair() {
+
+		int[] dices = {1,1,3,4,4};
+		assertEquals(RoundUtils.onePair(dices),4<<1);
+		assertNotEquals(RoundUtils.onePair(dices),1<<1);
+		dices[2] = 1;
+		assertEquals(RoundUtils.onePair(dices),4<<1);
+		assertNotEquals(RoundUtils.onePair(dices),1<<1);
+		dices[2] = 4;
+		assertEquals(RoundUtils.onePair(dices),4<<1);
+		assertNotEquals(RoundUtils.onePair(dices),1<<1);
+
+	}
+
+	@Test
+	public void testTwoPair() {
+
+		int[] dices = {1,1,3,4,4};
+		assertEquals(RoundUtils.twoPairs(dices),(4<<1) + (1<<1));
+		dices[2] = 1;
+		assertEquals(RoundUtils.twoPairs(dices),(4<<1) + (1<<1));
+		dices[3] = 1;
+		assertEquals(RoundUtils.twoPairs(dices),-1);
+
+
+
+	}
+
+
+
 
 
 }
