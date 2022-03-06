@@ -16,7 +16,7 @@ public class RoundUtils {
             }
         }
         //value in cell is 0 if not played, and -1 if played but no sum
-        return ((sum | 0) == 0) ? -1: 1 * sum;
+        return ((sum | 0) == 0) ? ~0: 1 * sum;
     }
 
     public static int twoes(int[] dices) {
@@ -25,8 +25,8 @@ public class RoundUtils {
             if (dices[i] == 2) {
                 sum = -~sum;
             }
-        }
-        return ((sum | 0) == 0) ? -1: sum << 1;
+        }           
+        return ((sum | 0) == 0) ? ~0: sum << 1;
     }
 
     public static int threes(int[] dices) {
@@ -36,7 +36,7 @@ public class RoundUtils {
                 sum = -~sum;
             }
         }
-        return ((sum | 0) == 0) ? -1: 3 * sum;
+        return ((sum | 0) == 0) ? ~0: 3 * sum;
     }
 
     public static int fours(int[] dices) {
@@ -46,7 +46,7 @@ public class RoundUtils {
                 sum = -~sum;
             }
         }
-        return ((sum | 0) == 0) ? -1: sum << 2;
+        return ((sum | 0) == 0) ? ~0: sum << 2;
     }
 
     public static int fives(int[] dices) {
@@ -56,7 +56,7 @@ public class RoundUtils {
                 sum = -~sum;
             }
         }
-        return ((sum | 0) == 0) ? -1: 5 * sum;
+        return ((sum | 0) == 0) ? ~0: 5 * sum;
     }
 
     public static int sixes(int[] dices) {
@@ -66,7 +66,7 @@ public class RoundUtils {
                 sum = -~sum;
             }
         }
-        return ((sum | 0) == 0) ? -1: 6 * sum;
+        return ((sum | 0) == 0) ? ~0: 6 * sum;
     }
 
 }
