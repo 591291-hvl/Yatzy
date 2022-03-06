@@ -93,6 +93,7 @@ public class Yatzy {
 
     /**
      * Play one round, each player gets to play
+     *
      * @param round round number
      */
     public void playOneRound(int round) {
@@ -102,8 +103,11 @@ public class Yatzy {
             int[] diceValues = playPlayerRound(i);
 
             //logic method
-            //needs id and round as parameter
             gameLogic(i, round, diceValues);
+
+            //update totals
+            board.setValue(i, 6, RoundUtils.firstSum(i,board));
+            board.setValue(i, 17, RoundUtils.totalSum(i,board));
 
             //display
             display();
@@ -112,9 +116,24 @@ public class Yatzy {
 
     public void playGame() {
         //rounds to play 6 + 9
+
+        //first 6 rounds
         for (int i = 1; i <= 6; i = -~i) {
             playOneRound(i);
         }
+        //bonus for each player
+        for (int j = 0; j < numberOfPlayers; j = -~j) {
+            RoundUtils.firstSum(j, board);
+        }
+
+        //last rounds
+        for(int i = 8; i <= 8+9; i = -~i){
+            playOneRound(i);
+        }
+
+        //calculate winner
+
+
     }
 
     /**
@@ -125,7 +144,7 @@ public class Yatzy {
      * @param dices array of dice values
      */
     public void gameLogic(int id, int round, int[] dices) {
-        board.setValue(id,round-1,roundSwitch(round, dices));
+        board.setValue(id, round - 1, roundSwitch(round, dices));
 
     }
 
