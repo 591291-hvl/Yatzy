@@ -34,7 +34,7 @@ public class Yatzy {
      * prints how the board looks like in console
      */
     public void display(){
-        String stringBoard = "";
+        String stringBoard = String.format("%-20s", "Players");;
         int[] playerId = players.getPlayers();
         for (int i = 0; i < numberOfPlayers; i = -~i){
             stringBoard += String.format("%-10s", playerId[i]);
