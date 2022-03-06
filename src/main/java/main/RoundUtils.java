@@ -25,7 +25,7 @@ public class RoundUtils {
             if (dices[i] == 2) {
                 sum = -~sum;
             }
-        }           
+        }
         return ((sum | 0) == 0) ? ~0: sum << 1;
     }
 
