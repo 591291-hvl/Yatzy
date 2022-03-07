@@ -1,10 +1,7 @@
 package main;
 
 
-import java.util.Arrays;
-import java.util.List;
 import java.util.Scanner;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class Yatzy {
@@ -114,6 +111,9 @@ public class Yatzy {
         }
     }
 
+    /**
+     * Callable method to play whole game
+     */
     public void playGame() {
         //rounds to play 6 + 9
 
@@ -123,16 +123,17 @@ public class Yatzy {
         }
         //bonus for each player
         for (int j = 0; j < numberOfPlayers; j = -~j) {
-            RoundUtils.firstSum(j, board);
+            board.setValue(j,7,RoundUtils.bonus(RoundUtils.firstSum(j, board)));
         }
 
         //last rounds
-        for(int i = 8; i <= 8+9; i = -~i){
+        for(int i = 9; i <= 9+8; i = -~i){
             playOneRound(i);
         }
 
         //calculate winner
-
+        System.out.println("Player won: ");
+        System.out.println(players.getPlayer(RoundUtils.winner(numberOfPlayers, board)));
 
     }
 
@@ -169,6 +170,33 @@ public class Yatzy {
                 break;
             case 6:
                 value = RoundUtils.sixes(dices);
+                break;
+            case 9:
+                value = RoundUtils.onePair(dices);
+                break;
+            case 10:
+                value = RoundUtils.twoPairs(dices);
+                break;
+            case 11:
+                value = RoundUtils.threeOfAKind(dices);
+                break;
+            case 12:
+                value = RoundUtils.fourOfAKind(dices);
+                break;
+            case 13:
+                value = RoundUtils.smallStright(dices);
+                break;
+            case 14:
+                value = RoundUtils.bigStright(dices);
+                break;
+            case 15:
+                value = RoundUtils.house(dices);
+                break;
+            case 16:
+                value = RoundUtils.chance(dices);
+                break;
+            case 17:
+                value = RoundUtils.yatzy(dices);
                 break;
             default:
                 value = -1;

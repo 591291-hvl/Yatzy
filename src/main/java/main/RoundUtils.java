@@ -290,6 +290,14 @@ public class RoundUtils {
     }
 
     /**
+     * @param firstSum sum of 6 first cells
+     * @return 50 if player has gotten more than 63 points
+     */
+    public static int bonus(int firstSum) {
+        return firstSum >= 63 ? 50 : ~0;
+    }
+
+    /**
      * @param id    a players id
      * @param board yatzy board
      * @return total sum of all rows for a player
@@ -298,13 +306,32 @@ public class RoundUtils {
         int sum = 0;
         int[] playerBoard = board.getPlayerBoard(id);
         //first sum[6] + bonus[7]
-        sum += playerBoard[6] + playerBoard[7];
+        sum += (playerBoard[6] == ~0 ? 0 : playerBoard[6]) + (playerBoard[7] == ~0 ? 0 : playerBoard[7]);
 
         //remaining 9 cells
-        for (int i = 8; i < 8 + 9; i = -~i) {
+        for (int i = 8; i < 8 + 8; i = -~i) {
             sum += playerBoard[i] == ~0 ? 0 : playerBoard[i];
         }
         return sum;
+    }
+
+    /**
+     * @param numberOfPlayers number of players
+     * @param board           yatzy board
+     * @return id of player with most points
+     */
+    public static int winner(int numberOfPlayers, Board board) {
+        int winnerId = -1;
+        int highest = -1;
+        int[][] wholeBoard = board.getBoard();
+        for (int i = 0; i < numberOfPlayers; i = -~i) {
+            if (wholeBoard[i][17] > highest) {
+                winnerId = i;
+                highest = wholeBoard[i][17];
+            }
+
+        }
+        return winnerId;
     }
 
 
