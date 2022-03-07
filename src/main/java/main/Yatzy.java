@@ -103,8 +103,8 @@ public class Yatzy {
             gameLogic(i, round, diceValues);
 
             //update totals
-            board.setValue(i, 6, RoundUtils.firstSum(i,board));
-            board.setValue(i, 17, RoundUtils.totalSum(i,board));
+            board.setValue(i, 6, RoundUtils.firstSum(i, board));
+            board.setValue(i, 17, RoundUtils.totalSum(i, board));
 
             //display
             display();
@@ -123,11 +123,11 @@ public class Yatzy {
         }
         //bonus for each player
         for (int j = 0; j < numberOfPlayers; j = -~j) {
-            board.setValue(j,7,RoundUtils.bonus(RoundUtils.firstSum(j, board)));
+            board.setValue(j, 7, RoundUtils.bonus(RoundUtils.firstSum(j, board)));
         }
 
         //last rounds
-        for(int i = 9; i <= 9+8; i = -~i){
+        for (int i = 9; i <= 9 + 8; i = -~i) {
             playOneRound(i);
         }
 

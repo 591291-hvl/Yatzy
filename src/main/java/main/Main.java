@@ -15,17 +15,6 @@ public class Main {
 
 		yatzy.playGame();
 
-
-
-
-
-
-
-
-
-
-
-
 	}
 
 }
