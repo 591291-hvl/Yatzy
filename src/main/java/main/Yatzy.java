@@ -118,7 +118,7 @@ public class Yatzy {
         //rounds to play 6 + 9
 
         //first 6 rounds
-        for (int i = 1; i <= 6; i = -~i) {
+        for (int i = -~0; i <= 6; i = -~i) {
             playOneRound(i);
         }
         //bonus for each player
@@ -145,10 +145,17 @@ public class Yatzy {
      * @param dices array of dice values
      */
     public void gameLogic(int id, int round, int[] dices) {
-        board.setValue(id, round - 1, roundSwitch(round, dices));
+        board.setValue(id, ~-round, roundSwitch(round, dices));
 
     }
 
+    /**
+     * Switch method to use roundUtils
+     *
+     * @param round
+     * @param dices
+     * @return
+     */
     public int roundSwitch(int round, int[] dices) {
         int value = 0;
 
@@ -199,7 +206,7 @@ public class Yatzy {
                 value = RoundUtils.yatzy(dices);
                 break;
             default:
-                value = -1;
+                value = ~0;
                 //should send error, invalid value
                 System.out.println("Invalid value");
         }
