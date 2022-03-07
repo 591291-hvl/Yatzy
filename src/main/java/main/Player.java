@@ -2,6 +2,10 @@ package main;
 
 import java.util.Scanner;
 
+/**
+ * @author Daniel K.Gunleiksrud
+ */
+
 public class Player {
 
     //for now we can use id, but later we need
@@ -49,11 +53,10 @@ public class Player {
     }
 
     /**
-     *
      * @param id of player
      * @return player name
      */
-    public String getPlayer(int id){
+    public String getPlayer(int id) {
         return players[id];
     }
 }

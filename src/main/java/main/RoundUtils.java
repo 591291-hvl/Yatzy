@@ -2,6 +2,7 @@ package main;
 
 
 /**
+ * @author Daniel K.Gunleiksrud
  * Game logic for each round
  * Calculates value from dices
  */

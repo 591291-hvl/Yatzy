@@ -8,6 +8,10 @@ import org.junit.Test;
 
 import main.Dice;
 
+/**
+ * @author Daniel K.Gunleiksrud
+ */
+
 public class DiceTest {
 
     @Test
