@@ -7,6 +7,10 @@ package main;
  */
 public class RoundUtils {
 
+    /**
+     * @param dices int array of dice values
+     * @return sum of dice valued 1
+     */
     public static int ones(int[] dices) {
         int sum = 0;
         for (int i = 0; i < dices.length; i = -~i) {
@@ -18,6 +22,10 @@ public class RoundUtils {
         return ((sum | 0) == 0) ? ~0 : 1 * sum;
     }
 
+    /**
+     * @param dices int array of dice values
+     * @return sum of dice valued 2
+     */
     public static int twoes(int[] dices) {
         int sum = 0;
         for (int i = 0; i < dices.length; i = -~i) {
@@ -28,6 +36,10 @@ public class RoundUtils {
         return ((sum | 0) == 0) ? ~0 : sum << 1;
     }
 
+    /**
+     * @param dices int array of dice values
+     * @return sum of dice valued 3
+     */
     public static int threes(int[] dices) {
         int sum = 0;
         for (int i = 0; i < dices.length; i = -~i) {
@@ -38,6 +50,10 @@ public class RoundUtils {
         return ((sum | 0) == 0) ? ~0 : 3 * sum;
     }
 
+    /**
+     * @param dices int array of dice values
+     * @return sum of dice valued 4
+     */
     public static int fours(int[] dices) {
         int sum = 0;
         for (int i = 0; i < dices.length; i = -~i) {
@@ -48,6 +64,10 @@ public class RoundUtils {
         return ((sum | 0) == 0) ? ~0 : sum << 2;
     }
 
+    /**
+     * @param dices int array of dice values
+     * @return sum of dice valued 5
+     */
     public static int fives(int[] dices) {
         int sum = 0;
         for (int i = 0; i < dices.length; i = -~i) {
@@ -58,6 +78,10 @@ public class RoundUtils {
         return ((sum | 0) == 0) ? ~0 : 5 * sum;
     }
 
+    /**
+     * @param dices int array of dice values
+     * @return sum of dice valued 6
+     */
     public static int sixes(int[] dices) {
         int sum = 0;
         for (int i = 0; i < dices.length; i = -~i) {
@@ -68,6 +92,10 @@ public class RoundUtils {
         return ((sum | 0) == 0) ? ~0 : 6 * sum;
     }
 
+    /**
+     * @param dices int array of dice values
+     * @return sum of the highest pair
+     */
     public static int onePair(int[] dices) {
         int[] duplicateArray = new int[6];
         //increment if value exists
@@ -85,6 +113,10 @@ public class RoundUtils {
         return pairFound == ~-0 ? ~0 : pairFound << 1;
     }
 
+    /**
+     * @param dices int array of dice values
+     * @return sum of the two highest pairs
+     */
     public static int twoPairs(int[] dices) {
         int[] duplicateArray = new int[6];
         //increment if value exists
@@ -106,6 +138,10 @@ public class RoundUtils {
         return -1;
     }
 
+    /**
+     * @param dices int array of dice values
+     * @return sum of three of a kind
+     */
     public static int threeOfAKind(int[] dices) {
         int[] duplicateArray = new int[6];
         //increment if value exists
@@ -123,6 +159,10 @@ public class RoundUtils {
         return threeSame == ~-0 ? ~0 : threeSame * 3;
     }
 
+    /**
+     * @param dices int array of dice values
+     * @return sum of four of a kind
+     */
     public static int fourOfAKind(int[] dices) {
         int[] duplicateArray = new int[6];
         //increment if value exists
@@ -140,6 +180,10 @@ public class RoundUtils {
         return fourSame == ~-0 ? ~0 : fourSame * 4;
     }
 
+    /**
+     * @param dices int array of dice values
+     * @return sum of 1 to 5
+     */
     public static int smallStright(int[] dices) {
         int[] duplicateArray = new int[6];
         //increment if value exists
@@ -154,6 +198,10 @@ public class RoundUtils {
         return ~-(2 << 3);
     }
 
+    /**
+     * @param dices int array of dice values
+     * @return sum of 2 to 6
+     */
     public static int bigStright(int[] dices) {
         int[] duplicateArray = new int[6];
         //increment if value exists
@@ -168,6 +216,10 @@ public class RoundUtils {
         return 20;
     }
 
+    /**
+     * @param dices int array of dice values
+     * @return sum of a pair and three of a kind
+     */
     public static int house(int[] dices) {
         int[] duplicateArray = new int[6];
         //increment if value exists
@@ -190,15 +242,23 @@ public class RoundUtils {
         return two != ~0 && three != ~0 ? (three * 3) + (two << 1) : -1;
     }
 
+    /**
+     * @param dices int array of dice values
+     * @return sum of dices
+     */
     public static int chance(int[] dices) {
         int sum = 0;
-        for(int i = 0; i < dices.length; i = -~i){
+        for (int i = 0; i < dices.length; i = -~i) {
             sum += dices[i];
         }
         return sum;
     }
 
-    public static int yatzy(int[] dices){
+    /**
+     * @param dices int array of dice values
+     * @return sum of five of a kind
+     */
+    public static int yatzy(int[] dices) {
         int[] duplicateArray = new int[6];
         //increment if value exists
         for (int i = 0; i < dices.length; i = -~i) {
@@ -215,6 +275,11 @@ public class RoundUtils {
     }
 
 
+    /**
+     * @param id    a players id
+     * @param board yatzy board
+     * @return sum of first 6 rows for a player
+     */
     public static int firstSum(int id, Board board) {
         int sum = 0;
         int[] playerBoard = board.getPlayerBoard(id);
@@ -224,6 +289,11 @@ public class RoundUtils {
         return sum;
     }
 
+    /**
+     * @param id    a players id
+     * @param board yatzy board
+     * @return total sum of all rows for a player
+     */
     public static int totalSum(int id, Board board) {
         int sum = 0;
         int[] playerBoard = board.getPlayerBoard(id);
