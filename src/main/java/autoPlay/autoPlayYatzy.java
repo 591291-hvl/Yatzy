@@ -1,10 +1,15 @@
-package main;
+package autoPlay;
 
+
+import main.Board;
+import main.DiceShaker;
+import main.Player;
+import main.RoundUtils;
 
 import java.util.Scanner;
 import java.util.stream.Stream;
 
-public class Yatzy {
+public class autoPlayYatzy {
 
     DiceShaker shaker;
     Player players;
@@ -19,7 +24,7 @@ public class Yatzy {
      * @param numberOfDices   number of dices to play by
      * @param numberOfPlayers number of players:)
      */
-    public Yatzy(int numberOfDices, int numberOfPlayers) {
+    public autoPlayYatzy(int numberOfDices, int numberOfPlayers) {
         //create dice shaker, option to choose number of dices
         this.shaker = new DiceShaker(numberOfDices);
         this.numberOfDices = numberOfDices;
@@ -52,40 +57,29 @@ public class Yatzy {
     }
 
     /**
-     * Plays round for one player
-     *
-     * @param id player id
-     * @return int[] dice values
+     * Callable method to autoplayGame
      */
-    public int[] playPlayerRound(int id) {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("\n" + "Player " + players.getPlayer(id) + "'s turn");
+    public void playGame() {
+        //rounds to play 6 + 9
 
-        //roll happens 3 times, ability to keep 2 times
-
-
-        for (int i = 0; i < 2; i = -~i) {
-            //roll and display
-            shaker.shakeDice();
-            shaker.display();
-
-            //option to keep
-            //create int array from sc input
-            System.out.println("Write position of dice to keep 0-5, seperated by space");
-            int[] diceToLock = Stream.of(sc.nextLine().split(" ")).mapToInt(Integer::parseInt).map(x -> ~-x).toArray();
-            //lock dice
-            shaker.lockDice(diceToLock);
+        //first 6 rounds
+        for (int i = 1; i <= 6; i = -~i) {
+            playOneRound(i);
         }
-        System.out.println("Results: ");
-        shaker.shakeDice();
-        shaker.display();
+        //bonus for each player
+        for (int j = 0; j < numberOfPlayers; j = -~j) {
+            board.setValue(j, 7, RoundUtils.bonus(RoundUtils.firstSum(j, board)));
+        }
 
-        //store value
-        int[] diceValues = Stream.of(shaker.getDices()).mapToInt(a -> a.getValue()).toArray();
+        //last rounds
+        for (int i = 9; i <= 9 + 8; i = -~i) {
+            playOneRound(i);
+        }
 
-        //dices back in shaker
-        shaker.reset();
-        return diceValues;
+        //calculate winner
+        System.out.println("Player won: ");
+        System.out.println(players.getPlayer(RoundUtils.winner(numberOfPlayers, board)));
+
     }
 
     /**
@@ -112,29 +106,40 @@ public class Yatzy {
     }
 
     /**
-     * Callable method to play whole game
+     * Plays round for one player
+     *
+     * @param id player id
+     * @return int[] dice values
      */
-    public void playGame() {
-        //rounds to play 6 + 9
+    public int[] playPlayerRound(int id) {
+        //Scanner sc = new Scanner(System.in);
+        System.out.println("\n" + "Player " + players.getPlayer(id) + "'s turn");
 
-        //first 6 rounds
-        for (int i = 1; i <= 6; i = -~i) {
-            playOneRound(i);
+        //roll happens 3 times, ability to keep 2 times
+
+
+        for (int i = 0; i < 2; i = -~i) {
+            //roll and display
+            shaker.shakeDice();
+            shaker.display();
+
+            //option to keep
+            //create int array from sc input
+            //System.out.println("Write position of dice to keep 0-5, seperated by space");
+            //int[] diceToLock = Stream.of(sc.nextLine().split(" ")).mapToInt(Integer::parseInt).map(x -> ~-x).toArray();
+            //lock dice
+            //shaker.lockDice(diceToLock);
         }
-        //bonus for each player
-        for (int j = 0; j < numberOfPlayers; j = -~j) {
-            board.setValue(j, 7, RoundUtils.bonus(RoundUtils.firstSum(j, board)));
-        }
+        System.out.println("Results: ");
+        shaker.shakeDice();
+        shaker.display();
 
-        //last rounds
-        for (int i = 9; i <= 9 + 8; i = -~i) {
-            playOneRound(i);
-        }
+        //store value
+        int[] diceValues = Stream.of(shaker.getDices()).mapToInt(a -> a.getValue()).toArray();
 
-        //calculate winner
-        System.out.println("Player won: ");
-        System.out.println(players.getPlayer(RoundUtils.winner(numberOfPlayers, board)));
-
+        //dices back in shaker
+        shaker.reset();
+        return diceValues;
     }
 
     /**
@@ -205,6 +210,5 @@ public class Yatzy {
         }
         return value;
     }
-
 
 }
