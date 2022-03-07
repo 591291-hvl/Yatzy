@@ -8,6 +8,8 @@ import static org.junit.Assert.assertNotEquals;
 
 public class RoundUtilsTest {
 
+    
+
 
     @Test
     public void testones() {
@@ -197,5 +199,24 @@ public class RoundUtilsTest {
 
     }
 
+    @Test
+    public void testYatzy() {
 
+        int[] dices = {1, 1, 1, 1, 1};
+        assertEquals(RoundUtils.yatzy(dices), 1*5);
+        dices[0] = 2;
+        dices[1] = 2;
+        dices[2] = 2;
+        dices[3] = 2;
+        dices[4] = 2;
+        assertEquals(RoundUtils.yatzy(dices), 2*5);
+        dices[0] = 6;
+        dices[1] = 6;
+        dices[2] = 6;
+        dices[3] = 6;
+        dices[4] = 6;
+        assertEquals(RoundUtils.yatzy(dices), 6*5);
+
+
+    }
 }

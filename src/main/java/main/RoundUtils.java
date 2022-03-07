@@ -198,6 +198,22 @@ public class RoundUtils {
         return sum;
     }
 
+    public static int yatzy(int[] dices){
+        int[] duplicateArray = new int[6];
+        //increment if value exists
+        for (int i = 0; i < dices.length; i = -~i) {
+            duplicateArray[~-dices[i]] += -~0;
+        }
+        int yatzy = -1;
+        for (int i = 0; i < duplicateArray.length; i = -~i) {
+            if (duplicateArray[i] >= 5) {
+                yatzy = -~i;
+            }
+
+        }
+        return yatzy == ~-0 ? ~0 : yatzy * 5;
+    }
+
 
     public static int firstSum(int id, Board board) {
         int sum = 0;
