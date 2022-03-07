@@ -168,6 +168,36 @@ public class RoundUtils {
         return 20;
     }
 
+    public static int house(int[] dices) {
+        int[] duplicateArray = new int[6];
+        //increment if value exists
+        for (int i = 0; i < dices.length; i = -~i) {
+            duplicateArray[~-dices[i]] += -~0;
+        }
+
+        int three = -1;
+        int two = -1;
+        for (int i = 0; i < duplicateArray.length; i = -~i) {
+            if (duplicateArray[i] >= 3) {
+                three = -~i;
+                continue;
+            }
+            if (duplicateArray[i] >= 2) {
+                two = -~i;
+            }
+
+        }
+        return two != ~0 && three != ~0 ? (three * 3) + (two << 1) : -1;
+    }
+
+    public static int chance(int[] dices) {
+        int sum = 0;
+        for(int i = 0; i < dices.length; i = -~i){
+            sum += dices[i];
+        }
+        return sum;
+    }
+
 
     public static int firstSum(int id, Board board) {
         int sum = 0;

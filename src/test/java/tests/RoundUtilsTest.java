@@ -164,12 +164,35 @@ public class RoundUtilsTest {
 
     }
 
+    @Test
     public void testBigStraight() {
 
         int[] dices = {2, 3, 4, 5, 6};
         assertEquals(RoundUtils.bigStright(dices), 20);
-        dices[5] = 2;
+        dices[4] = 2;
         assertEquals(RoundUtils.bigStright(dices), ~0);
+
+
+    }
+
+    @Test
+    public void testHouse() {
+
+        int[] dices = {2, 2, 4, 4, 4};
+        assertEquals(RoundUtils.house(dices), (2<<1) + 4*3);
+        dices[3] = 2;
+        assertEquals(RoundUtils.house(dices), (2*3) + (4<<1));
+
+
+    }
+
+    @Test
+    public void testChance() {
+
+        int[] dices = {1, 2, 3, 4, 5};
+        assertEquals(RoundUtils.chance(dices), 1+2+3+4+5);
+        dices[0] = 2;
+        assertEquals(RoundUtils.chance(dices), 2+2+3+4+5);
 
 
     }
