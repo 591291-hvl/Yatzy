@@ -1,5 +1,9 @@
 package main;
 
+/**
+ * @author Daniel K.Gunleiksrud
+ */
+
 public class Board {
 
     int[][] board;
@@ -31,6 +35,7 @@ public class Board {
      * Columns are n number of players
      * board[0-n][0-18]
      * Value in cell is 0 when not played, but -1 if played but no value
+     *
      * @param numberOfPlayers number of players chosen
      */
     public Board(int numberOfPlayers) {
@@ -41,55 +46,52 @@ public class Board {
     }
 
     /**
-     *
      * @return board
      */
-    public int[][] getBoard(){
+    public int[][] getBoard() {
         return board;
     }
 
     /**
      * Gives new value in cell
-     * @param id id of player
-     * @param round round nr
+     *
+     * @param id       id of player
+     * @param round    round nr
      * @param newValue new value in cell
      */
-    public void setValue(int id, int round, int newValue){
+    public void setValue(int id, int round, int newValue) {
         board[id][round] = newValue;
     }
 
     /**
-     *
      * @param player player id
      * @return board of a player with id
      */
-    public int[] getPlayerBoard(int player){
+    public int[] getPlayerBoard(int player) {
         return board[player];
     }
 
     /**
-     *
      * @return numberOfPlayers
      */
-    public int getNumberOfPlayers(){
+    public int getNumberOfPlayers() {
         return numberOfPlayers;
     }
 
     /**
-     *
      * @return board as a string
      */
     public String toString() {
         String outString = "";
 
-        for(int i = 0; i < 18; i = -~i){
+        for (int i = 0; i < 18; i = -~i) {
             outString += String.format("%-20s", rowInfo[i]);
-            for(int j = 0; j < numberOfPlayers; j = -~j){
-                if(board[j][i] == 0){
+            for (int j = 0; j < numberOfPlayers; j = -~j) {
+                if (board[j][i] == 0) {
                     outString += String.format("%-10s", "-");
                     continue;
                 }
-                if(board[j][i] == -1){
+                if (board[j][i] == -1) {
                     outString += String.format("%-10s", 0);
                     continue;
                 }

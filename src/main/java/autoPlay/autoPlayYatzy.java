@@ -6,8 +6,13 @@ import main.DiceShaker;
 import main.Player;
 import main.RoundUtils;
 
-import java.util.Scanner;
 import java.util.stream.Stream;
+
+/**
+ * @author Daniel K.Gunleiksrud
+ * <p>
+ * Autoplays game
+ */
 
 public class autoPlayYatzy {
 

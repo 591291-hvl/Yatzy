@@ -4,6 +4,10 @@ package main;
 import java.util.Scanner;
 import java.util.stream.Stream;
 
+/**
+ * @author Daniel K.Gunleiksrud
+ */
+
 public class Yatzy {
 
     DiceShaker shaker;

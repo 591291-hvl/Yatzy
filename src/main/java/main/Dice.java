@@ -23,6 +23,7 @@ public class Dice {
 
     /**
      * Gets current dice value
+     *
      * @return value
      */
     public int getValue() {
@@ -31,9 +32,10 @@ public class Dice {
 
     /**
      * Manual way to change dice, should not be used in game
+     *
      * @param newValue new value for dice
      */
-    public void setValue(int newValue){
+    public void setValue(int newValue) {
         this.value = newValue;
     }
 

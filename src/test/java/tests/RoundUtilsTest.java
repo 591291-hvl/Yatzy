@@ -6,9 +6,11 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 
+/**
+ * @author Daniel K.Gunleiksrud
+ */
+
 public class RoundUtilsTest {
-
-
 
 
     @Test
@@ -181,9 +183,9 @@ public class RoundUtilsTest {
     public void testHouse() {
 
         int[] dices = {2, 2, 4, 4, 4};
-        assertEquals(RoundUtils.house(dices), (2<<1) + 4*3);
+        assertEquals(RoundUtils.house(dices), (2 << 1) + 4 * 3);
         dices[3] = 2;
-        assertEquals(RoundUtils.house(dices), (2*3) + (4<<1));
+        assertEquals(RoundUtils.house(dices), (2 * 3) + (4 << 1));
 
 
     }
@@ -192,9 +194,9 @@ public class RoundUtilsTest {
     public void testChance() {
 
         int[] dices = {1, 2, 3, 4, 5};
-        assertEquals(RoundUtils.chance(dices), 1+2+3+4+5);
+        assertEquals(RoundUtils.chance(dices), 1 + 2 + 3 + 4 + 5);
         dices[0] = 2;
-        assertEquals(RoundUtils.chance(dices), 2+2+3+4+5);
+        assertEquals(RoundUtils.chance(dices), 2 + 2 + 3 + 4 + 5);
 
 
     }
@@ -203,19 +205,19 @@ public class RoundUtilsTest {
     public void testYatzy() {
 
         int[] dices = {1, 1, 1, 1, 1};
-        assertEquals(RoundUtils.yatzy(dices), 1*5);
+        assertEquals(RoundUtils.yatzy(dices), 1 * 5);
         dices[0] = 2;
         dices[1] = 2;
         dices[2] = 2;
         dices[3] = 2;
         dices[4] = 2;
-        assertEquals(RoundUtils.yatzy(dices), 2*5);
+        assertEquals(RoundUtils.yatzy(dices), 2 * 5);
         dices[0] = 6;
         dices[1] = 6;
         dices[2] = 6;
         dices[3] = 6;
         dices[4] = 6;
-        assertEquals(RoundUtils.yatzy(dices), 6*5);
+        assertEquals(RoundUtils.yatzy(dices), 6 * 5);
 
 
     }

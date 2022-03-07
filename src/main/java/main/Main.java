@@ -1,20 +1,19 @@
 package main;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+/**
+ * @author Daniel K.Gunleiksrud
+ */
 
 public class Main {
 
-	public static void main(String[] args) {
-		
-		Yatzy yatzy = new Yatzy(5,4);
+    public static void main(String[] args) {
 
-		yatzy.display();
+        Yatzy yatzy = new Yatzy(5, 4);
 
-		yatzy.playGame();
+        yatzy.display();
 
-	}
+        yatzy.playGame();
+
+    }
 
 }
