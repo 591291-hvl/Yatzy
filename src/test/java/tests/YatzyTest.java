@@ -1,14 +1,12 @@
 package tests;
 
-import main.BitWise;
 import main.Yatzy;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
 public class YatzyTest {
-	
-	BitWise bitWise = new BitWise();
+
 
 	@Test
 	public void switchTest() {

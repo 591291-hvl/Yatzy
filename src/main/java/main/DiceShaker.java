@@ -44,6 +44,14 @@ public class DiceShaker {
         return shaker;
     }
 
+    public int[] getDiceValue(){
+        int[] values = new int[numberOfDices];
+        for(int i = 0; i < values.length; i = -~i){
+            values[i] = shaker[i].getValue();
+        }
+        return values;
+    }
+
     public void display() {
         String printString = String.format("%-10s", "Dices:");
         for (int i = 0; i < numberOfDices; i = -~i) {

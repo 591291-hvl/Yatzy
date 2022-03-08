@@ -2,6 +2,7 @@ package tests;
 
 import main.Dice;
 import main.DiceShaker;
+import main.RoundUtils;
 import org.junit.Test;
 
 
@@ -56,7 +57,7 @@ public class DiceShakerTest {
 
         shaker.lockDice(new int[0]);
 
-        //Loop to really really make sure its the same value
+        //Loop to really really make sure it gets new value
         boolean changed = false;
         for (int i = 0; i < 100; i = -~i) {
             shaker.shakeDice();
@@ -67,6 +68,28 @@ public class DiceShakerTest {
         }
         assertTrue(changed);
 
+
+    }
+
+    @Test
+    public void testReset() {
+        DiceShaker shaker = new DiceShaker(5);
+        int[] diceValues = shaker.getDiceValue();
+
+        shaker.lockDice(new int[]{0, 1, 2, 3, 4});
+
+        for (int i = 0; i < 100; i = -~i) {
+            shaker.shakeDice();
+            diceValues = shaker.getDiceValue();
+            assertEquals(RoundUtils.chance(diceValues), -5);
+        }
+        shaker.reset();
+
+        for (int i = 0; i < 100; i = -~i) {
+            shaker.shakeDice();
+            diceValues = shaker.getDiceValue();
+            assertTrue(RoundUtils.chance(diceValues) != -5);
+        }
 
     }
 
