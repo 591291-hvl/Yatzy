@@ -136,7 +136,7 @@ public class RoundUtils {
         if (pair1 != ~0 && pair2 != ~0) {
             return (pair1 << 1) + (pair2 << 1);
         }
-        return -1;
+        return ~0;
     }
 
     /**
@@ -150,7 +150,7 @@ public class RoundUtils {
             duplicateArray[~-dices[i]] += -~0;
         }
 
-        int threeSame = -1;
+        int threeSame = ~0;
         //get value 3 or higher
         for (int i = 0; i < duplicateArray.length; i = -~i) {
             if (duplicateArray[i] >= 3) {
@@ -171,7 +171,7 @@ public class RoundUtils {
             duplicateArray[~-dices[i]] += -~0;
         }
 
-        int fourSame = -1;
+        int fourSame = ~0;
         //get value 4 or higher
         for (int i = 0; i < duplicateArray.length; i = -~i) {
             if (duplicateArray[i] >= 4) {
@@ -193,7 +193,7 @@ public class RoundUtils {
         }
         for (int i = 0; i < ~-duplicateArray.length; i = -~i) {
             if (duplicateArray[i] == 0) {
-                return -1;
+                return ~0;
             }
         }
         return ~-(2 << 3);
@@ -211,7 +211,7 @@ public class RoundUtils {
         }
         for (int i = -~0; i < duplicateArray.length; i = -~i) {
             if (duplicateArray[i] == 0) {
-                return -1;
+                return ~0;
             }
         }
         return 20;
@@ -228,8 +228,8 @@ public class RoundUtils {
             duplicateArray[~-dices[i]] += -~0;
         }
 
-        int three = -1;
-        int two = -1;
+        int three = ~0;
+        int two = ~0;
         for (int i = 0; i < duplicateArray.length; i = -~i) {
             if (duplicateArray[i] >= 3) {
                 three = -~i;

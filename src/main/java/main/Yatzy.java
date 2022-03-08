@@ -155,10 +155,11 @@ public class Yatzy {
 
     /**
      * Switch method to use roundUtils
+     * Each row has different ruleset
      *
-     * @param round
-     * @param dices
-     * @return
+     * @param round round number
+     * @param dices dice values to be calculated
+     * @return value from a roundUtils method
      */
     public int roundSwitch(int round, int[] dices) {
         int value = 0;

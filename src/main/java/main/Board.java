@@ -91,7 +91,7 @@ public class Board {
                     outString += String.format("%-10s", "-");
                     continue;
                 }
-                if (board[j][i] == -1) {
+                if (board[j][i] == ~0) {
                     outString += String.format("%-10s", 0);
                     continue;
                 }
