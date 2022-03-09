@@ -240,7 +240,7 @@ public class RoundUtils {
             }
 
         }
-        return two != ~0 && three != ~0 ? (three * 3) + (two << 1) : -1;
+        return two != ~0 && three != ~0 ? (three * 3) + (two << 1) : ~0;
     }
 
     /**
@@ -265,7 +265,7 @@ public class RoundUtils {
         for (int i = 0; i < dices.length; i = -~i) {
             duplicateArray[~-dices[i]] += -~0;
         }
-        int yatzy = -1;
+        int yatzy = ~0;
         for (int i = 0; i < duplicateArray.length; i = -~i) {
             if (duplicateArray[i] >= 5) {
                 yatzy = -~i;
@@ -322,8 +322,8 @@ public class RoundUtils {
      * @return id of player with most points
      */
     public static int winner(int numberOfPlayers, Board board) {
-        int winnerId = -1;
-        int highest = -1;
+        int winnerId = ~0;
+        int highest = ~0;
         int[][] wholeBoard = board.getBoard();
         for (int i = 0; i < numberOfPlayers; i = -~i) {
             if (wholeBoard[i][17] > highest) {
