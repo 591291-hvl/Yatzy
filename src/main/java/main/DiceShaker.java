@@ -7,8 +7,8 @@ import java.util.Arrays;
  */
 public class DiceShaker {
 
-    Dice[] shaker;
-    int numberOfDices;
+    private Dice[] shaker;
+    private int numberOfDices;
 
     /**
      * Container for multiple dices

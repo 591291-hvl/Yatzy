@@ -6,8 +6,8 @@ package main;
 
 public class Board {
 
-    int[][] board;
-    int numberOfPlayers;
+    private int[][] board;
+    private int numberOfPlayers;
 
     String[] rowInfo = {
             "One's",
