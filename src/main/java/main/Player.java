@@ -9,8 +9,8 @@ import java.util.Scanner;
 public class Player {
 
     //for now we can use id, but later we need
-    String[] players;
-    int numberOfPlayers;
+    private String[] players;
+    private int numberOfPlayers;
 
     /**
      * constructor with scanner

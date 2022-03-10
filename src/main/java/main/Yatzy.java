@@ -10,12 +10,12 @@ import java.util.stream.Stream;
 
 public class Yatzy {
 
-    DiceShaker shaker;
-    Player players;
-    Board board;
+    private DiceShaker shaker;
+    private Player players;
+    private Board board;
 
-    int numberOfDices;
-    int numberOfPlayers;
+    private int numberOfDices;
+    private int numberOfPlayers;
 
     /**
      * Initializes classes to use in game
