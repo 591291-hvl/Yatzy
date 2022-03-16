@@ -56,7 +56,7 @@ public class DiceTest {
     public void testFairDice() {
         Dice dice = new Dice();
 
-        int N = 1_000_000;
+        int N = 1000000;
 
         int[] valueArray = new int[6];
 
