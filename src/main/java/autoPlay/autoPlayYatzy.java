@@ -17,7 +17,7 @@ import java.util.stream.Stream;
 public class autoPlayYatzy {
 
     DiceShaker shaker;
-    Player players;
+    Player[] players;
     Board board;
 
     int numberOfDices;
@@ -29,16 +29,14 @@ public class autoPlayYatzy {
      * @param numberOfDices   number of dices to play by
      * @param numberOfPlayers number of players:)
      */
-    public autoPlayYatzy(int numberOfDices, int numberOfPlayers) {
+    public autoPlayYatzy(int numberOfDices, int numberOfPlayers, Player[] players) {
         //create dice shaker, option to choose number of dices
         this.shaker = new DiceShaker(numberOfDices);
         this.numberOfDices = numberOfDices;
         this.numberOfPlayers = numberOfPlayers;
 
         //players
-        //this.players = new Player(numberOfPlayers);
-        String[] playerNames = {"Daniel", "Harald", "Per", "Petter"};
-        this.players = new Player(playerNames);
+        this.players = players;
 
         //board
         this.board = new Board(numberOfPlayers);
@@ -52,9 +50,8 @@ public class autoPlayYatzy {
     public void display() {
         String stringBoard = String.format("%-20s", "Players");
         ;
-        String[] playerId = players.getPlayers();
         for (int i = 0; i < numberOfPlayers; i = -~i) {
-            stringBoard += String.format("%-10s", playerId[i]);
+            stringBoard += String.format("%-10s", players[i].getPlayerName());
         }
         stringBoard += "\n" + board.toString();
 
@@ -83,7 +80,7 @@ public class autoPlayYatzy {
 
         //calculate winner
         System.out.println("Player won: ");
-        System.out.println(players.getPlayer(RoundUtils.winner(numberOfPlayers, board)));
+        System.out.println(players[(RoundUtils.winner(numberOfPlayers, board))]);
 
     }
 
@@ -118,7 +115,7 @@ public class autoPlayYatzy {
      */
     public int[] playPlayerRound(int id) {
         //Scanner sc = new Scanner(System.in);
-        System.out.println("\n" + "Player " + players.getPlayer(id) + "'s turn");
+        System.out.println("\n" + "Player " + players[id] + "'s turn");
 
         //roll happens 3 times, ability to keep 2 times
 
