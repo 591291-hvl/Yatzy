@@ -17,6 +17,9 @@ public class Yatzy {
     private int numberOfDices;
     private int numberOfPlayers;
 
+    //when variable becomes false find winner
+    private boolean gameActive = false;
+
     /**
      * Initializes classes to use in game
      *
@@ -67,8 +70,6 @@ public class Yatzy {
         System.out.println("\n" + "Player " + players[id] + "'s turn");
 
         //roll happens 3 times, ability to keep 2 times
-
-
         for (int i = 0; i < 2; i = -~i) {
             //roll and display
             shaker.shakeDice();
