@@ -9,54 +9,31 @@ import java.util.Scanner;
 public class Player {
 
     //for now we can use id, but later we need
-    private String[] players;
-    private int numberOfPlayers;
+    private String playerName;
+
 
     /**
-     * constructor with scanner
-     * player index is used for player id
      *
-     * @param numberOfPlayers
+     * @param playerName string of player name
      */
-    public Player(int numberOfPlayers) {
-        players = new String[numberOfPlayers];
-        this.numberOfPlayers = numberOfPlayers;
-        setPlayers();
-    }
-
-    /**
-     * constructor with name array
-     *
-     * @param players string of player names
-     */
-    public Player(String[] players) {
-        this.players = players;
-        this.numberOfPlayers = players.length;
-    }
-
-    /**
-     * Uses scanner to write in names of players
-     */
-    public void setPlayers() {
-        Scanner sc = new Scanner(System.in);
-        for (int i = 0; i < numberOfPlayers; i = -~i) {
-            players[i] = sc.nextLine();
-        }
+    public Player(String playerName) {
+        this.playerName = playerName;
     }
 
 
     /**
      * @return players
      */
-    public String[] getPlayers() {
-        return players;
+    public String getPlayerName() {
+        return playerName;
     }
 
     /**
-     * @param id of player
-     * @return player name
+     *
+     * @param playerName
      */
-    public String getPlayer(int id) {
-        return players[id];
+    public void SetName(String playerName){
+        this.playerName = playerName;
     }
+
 }

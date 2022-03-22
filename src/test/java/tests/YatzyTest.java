@@ -1,5 +1,6 @@
 package tests;
 
+import main.Player;
 import main.Yatzy;
 import org.junit.Test;
 
@@ -11,7 +12,13 @@ public class YatzyTest {
 	@Test
 	public void switchTest() {
 
-		Yatzy yatzy = new Yatzy(5, 4);
+		String[] playerNames = {"Daniel", "Harald", "Per", "Petter"};
+		Player[] players = new Player[4];
+		for(int i = 0; i < players.length; i = -~i){
+			players[i] = new Player(playerNames[i]);
+		}
+
+		Yatzy yatzy = new Yatzy(5, 4, players);
 		int[] dices = {1,1,2,2,3};
 
 

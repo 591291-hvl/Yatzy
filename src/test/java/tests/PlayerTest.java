@@ -15,14 +15,16 @@ public class PlayerTest {
     @Test
     public void test() {
 
-        String[] playerName = {"User1", "User2", "User3", "User4"};
+        String[] playerNames = {"Daniel", "Harald", "Per", "Petter"};
+        Player[] players = new Player[4];
+        for(int i = 0; i < players.length; i = -~i){
+            players[i] = new Player(playerNames[i]);
+        }
 
-        Player players = new Player(playerName);
-
-        assertEquals(players.getPlayer(0), playerName[0]);
-        assertEquals(players.getPlayer(1), playerName[1]);
-        assertEquals(players.getPlayer(2), playerName[2]);
-        assertEquals(players.getPlayer(3), playerName[3]);
+        assertEquals(players[0].getPlayerName(), playerNames[0]);
+        assertEquals(players[1].getPlayerName(), playerNames[1]);
+        assertEquals(players[2].getPlayerName(), playerNames[2]);
+        assertEquals(players[3].getPlayerName(), playerNames[3]);
 
     }
 
