@@ -8,6 +8,9 @@ public class CUI {
     private static Scanner sc = new Scanner(System.in);
 
 
+    /**
+     * Initializes the game
+     */
     public void createGame(){
         //in this version only 5 dices is allowed
         int numberOfDices = 5;
@@ -16,6 +19,15 @@ public class CUI {
         int numberOfPlayers = Integer.parseInt(sc.nextLine());
         yatzy = new Yatzy(numberOfDices, numberOfPlayers, setPlayers(numberOfPlayers));
     }
+
+    /**
+     * Method for playing the game
+     */
+    public void playGame(){
+        
+    }
+
+
 
 
     /**
