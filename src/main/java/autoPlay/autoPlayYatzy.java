@@ -1,10 +1,10 @@
 package autoPlay;
 
 
-import main.Board;
-import main.DiceShaker;
-import main.Player;
-import main.RoundUtils;
+import backend.Board;
+import backend.DiceShaker;
+import backend.Player;
+import backend.RoundUtils;
 
 import java.util.stream.Stream;
 

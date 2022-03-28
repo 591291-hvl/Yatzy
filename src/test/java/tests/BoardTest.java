@@ -1,6 +1,6 @@
 package tests;
 
-import main.Board;
+import backend.Board;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
