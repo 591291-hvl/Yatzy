@@ -1,8 +1,8 @@
 package tests;
 
-import main.Dice;
-import main.DiceShaker;
-import main.RoundUtils;
+import backend.Dice;
+import backend.DiceShaker;
+import backend.RoundUtils;
 import org.junit.Test;
 
 

@@ -1,7 +1,7 @@
 package autoPlay;
 
 
-import main.Player;
+import backend.Player;
 
 public class autoMain {
 

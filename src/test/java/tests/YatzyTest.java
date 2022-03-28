@@ -1,7 +1,7 @@
 package tests;
 
-import main.Player;
-import main.Yatzy;
+import backend.Player;
+import backend.Yatzy;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

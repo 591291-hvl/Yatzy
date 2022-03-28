@@ -1,4 +1,4 @@
-package main;
+package backend;
 
 /**
  * @author Daniel K.Gunleiksrud

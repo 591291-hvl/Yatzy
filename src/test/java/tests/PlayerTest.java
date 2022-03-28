@@ -1,6 +1,6 @@
 package tests;
 
-import main.Player;
+import backend.Player;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

@@ -1,6 +1,4 @@
-package main;
-
-import java.util.Scanner;
+package backend;
 
 /**
  * @author Daniel K.Gunleiksrud

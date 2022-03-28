@@ -1,6 +1,6 @@
 package tests;
 
-import main.RoundUtils;
+import backend.RoundUtils;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -184,9 +184,10 @@ public class RoundUtilsTest {
 
         int[] dices = {2, 2, 4, 4, 4};
         assertEquals(RoundUtils.house(dices), (2 << 1) + 4 * 3);
-        dices[3] = 2;
+        dices[2] = 2;
         assertEquals(RoundUtils.house(dices), (2 * 3) + (4 << 1));
-
+        dices[2] = 1;
+        assertEquals(RoundUtils.house(dices), ~0);
 
     }
 

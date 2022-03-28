@@ -1,4 +1,4 @@
-package main;
+package backend;
 
 import java.util.Scanner;
 
@@ -24,7 +24,7 @@ public class CUI {
      * Method for playing the game
      */
     public void playGame(){
-        
+
     }
 
 

@@ -6,7 +6,7 @@ import java.util.Arrays;
 
 import org.junit.Test;
 
-import main.Dice;
+import backend.Dice;
 
 /**
  * @author Daniel K.Gunleiksrud
