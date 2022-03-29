@@ -316,7 +316,7 @@ public class RoundUtils {
         return sum;
     }
 
-    /**
+    /**+
      * @param numberOfPlayers number of players
      * @param board           yatzy board
      * @return id of player with most points
