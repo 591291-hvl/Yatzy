@@ -5,12 +5,14 @@
              version="3.0">
     <persistence-unit name="PersonUnit">
 
-        <class>database.PersonEntity</class>
+        <class>entity.PersonEntity</class>
         <properties>
             <property name="jakarta.persistence.jdbc.driver" value="org.postgresql.Driver"/>
             <property name="jakarta.persistence.jdbc.url" value="jdbc:postgresql://ider-database.westeurope.cloudapp.azure.com:5432/h591291"/>
             <property name="jakarta.persistence.jdbc.user" value="h591291"/>
             <property name="jakarta.persistence.jdbc.password" value="pass"/>
+
+            <property name="eclipselink.logging.level" value="WARNING" />
 
 
         </properties>
