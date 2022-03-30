@@ -1,16 +1,16 @@
 package database;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "Person", schema = "public", catalog = "h591291")
 public class PersonEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "id", nullable = false, length = -1)
+    @Column(name = "id")
     private String id;
     @Basic
-    @Column(name = "name", nullable = true, length = -1)
+    @Column(name = "name")
     private String name;
 
     public String getId() {
