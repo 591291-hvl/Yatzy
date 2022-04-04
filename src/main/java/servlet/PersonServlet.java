@@ -28,21 +28,13 @@ public class PersonServlet extends HttpServlet {
         request.setAttribute("spillere", spillere);
 
         // G� til deltagerlisten
-        request.getRequestDispatcher("WEB-INF/personServlet.jsp").forward(request, response);
+        request.getRequestDispatcher("jsp/personServlet.jsp").forward(request, response);
 
 
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-
-        // Henter alle deltagerene sortert etter navn
-        List<PersonEntity> spillere = pDAO.getAllPersons();
-
-        // Setter deltagerene som atributt i requesten, hentes ut i jsp siden...
-        request.setAttribute("spillere", spillere);
-
-        // G� til deltagerlisten
-        request.getRequestDispatcher("WEB-INF/personServlet.jsp").forward(request, response);
+        response.sendRedirect("PersonServlet");
     }
 }
