@@ -3,7 +3,7 @@ package entity;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "Person", schema = "public", catalog = "h591291")
+@Table(name = "person", schema = "public")
 public class PersonEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
@@ -12,6 +12,18 @@ public class PersonEntity {
     @Basic
     @Column(name = "name")
     private String name;
+
+    public PersonEntity(){
+
+    }
+
+    public PersonEntity(String id, String name){
+        this.id = id;
+        this.name = name;
+    }
+
+
+
 
     public String getId() {
         return id;
@@ -27,6 +39,14 @@ public class PersonEntity {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "PersonEntity{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                '}';
     }
 
     @Override

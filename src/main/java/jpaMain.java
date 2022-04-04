@@ -18,6 +18,9 @@ public class jpaMain {
 
         PersonDAO pDAO = new PersonDAO();
 
+        PersonEntity p1 = new PersonEntity("003", "Petter");
+        pDAO.savePerson(p1);
+
         List<PersonEntity> persons = pDAO.getAllPersons();
 
         for(PersonEntity p : persons){
