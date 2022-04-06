@@ -9,7 +9,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 @Stateless
-@JavaBean
 public class PersonDAO {
 
     @PersistenceContext(name = "personUnit")

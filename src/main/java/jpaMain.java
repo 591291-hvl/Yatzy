@@ -1,9 +1,9 @@
 import dao.PersonDAO;
 import entity.PersonEntity;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.Persistence;
-import jakarta.persistence.TypedQuery;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
+import javax.persistence.Persistence;
 
 import java.util.List;
 
@@ -19,13 +19,13 @@ public class jpaMain {
         PersonDAO pDAO = new PersonDAO();
 
         PersonEntity p1 = new PersonEntity("003", "Petter");
-        pDAO.savePerson(p1);
+        /*pDAO.savePerson(p1);
 
         List<PersonEntity> persons = pDAO.getAllPersons();
 
         for(PersonEntity p : persons){
             System.out.println(p + "<-----");
-        }
+        }*/
 
 
 
