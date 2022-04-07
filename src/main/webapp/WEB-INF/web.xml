@@ -3,8 +3,8 @@
 	xmlns="http://xmlns.jcp.org/xml/ns/javaee" id="WebApp_ID" version="4.0">
 
 
-	<session-config>
-		<session-timeout>10</session-timeout>
-	</session-config>
-	
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+	</welcome-file-list>
+
 </web-app>
