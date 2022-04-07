@@ -29,7 +29,7 @@ public class PersonServlet extends HttpServlet {
         request.setAttribute("spillere", spillere);
 
         // G� til deltagerlisten
-        request.getRequestDispatcher("jsp/personServlet.jsp").forward(request, response);
+        request.getRequestDispatcher("WEB-INF/jsp/personServlet.jsp").forward(request, response);
 
 
     }

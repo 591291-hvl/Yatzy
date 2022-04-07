@@ -2,7 +2,7 @@ package dao;
 
 import entity.PersonEntity;
 
-import java.beans.JavaBean;
+
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
