@@ -9,7 +9,7 @@
 		<jta-data-source>h591291</jta-data-source>
 		<class>entity.Spiller</class>
 		<class>entity.Yatzy</class>
-		<properties>
+        <properties>
 			<property name="eclipselink.weaving" value="false" />
 		</properties>
 	</persistence-unit>

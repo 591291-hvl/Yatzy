@@ -25,6 +25,8 @@ public class LandingsSideServlet extends HttpServlet {
 	private SpillerDAO spillerDao;
 	@EJB
 	private YatzyDAO yatzyDao;
+//	@EJB
+//	private SpilldeltagelseDAO deltagelsDao;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// Henter alle deltagerene sortert etter navn
@@ -64,7 +66,16 @@ public class LandingsSideServlet extends HttpServlet {
 				response.sendRedirect("LandingsSideServlet");
 				return;
 			}else {//Riktig
+				//add user to game
+				//redirect to game side
+//				Spiller spiller = (Spiller) request.getSession().getAttribute("spiller");
+//				SpilldeltagelseEntityPK deltagelse = new SpilldeltagelseEntityPK();
+//				deltagelse.setBrukernavn(spiller.getBrukernavn());
+//				deltagelse.setId(Integer.parseInt(inpValue));
+//				deltagelsDao.lagre(deltagelse);
 				
+				
+				return;
 			}
 			
 		}
