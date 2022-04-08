@@ -12,7 +12,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.SpillerDAO;
+import dao.YatzyDAO;
 import entity.Spiller;
+import entity.Yatzy;
 
 
 @WebServlet(name = "LandingsSideServlet", urlPatterns = "/LandingsSideServlet")
@@ -21,6 +23,8 @@ public class LandingsSideServlet extends HttpServlet {
     
 	@EJB
 	private SpillerDAO spillerDao;
+	@EJB
+	private YatzyDAO yatzyDao;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// Henter alle deltagerene sortert etter navn
@@ -41,8 +45,23 @@ public class LandingsSideServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		
+		//check which button was pressed
+		if(true) {
+			//send to existing game, or error
+			
+		}
+		//create new game
+		//Spiller spiller = (Spiller) request.getSession().getAttribute("spiller");
+		//System.out.println(spiller.toString());
+		Yatzy yatzy = new Yatzy();
+		System.out.println(yatzy.toString());
+		yatzyDao.lagNyttSpill(yatzy);
+		
+		
+		
+		response.sendRedirect("LagSpillServlet");
+		
 	}
 
 }

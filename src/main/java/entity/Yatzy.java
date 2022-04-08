@@ -1,8 +1,10 @@
 package entity;
 
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
@@ -15,23 +17,38 @@ import javax.persistence.Table;
 public class Yatzy {
 	
 	@Id
+	@GeneratedValue
 	private String id;
 	private Integer antall;
-	private int[][] brett;
+	private String brett;
+	
+	public Yatzy(Integer antall, String brett) {
+		super();
+		this.antall = antall;
+		this.brett = brett;
+	}
+	
+	
+	public Yatzy() {
+		super();
+	}
 	
 	@ManyToMany
 	@JoinTable(
 			name = "spilldeltagelse",
 			joinColumns = @JoinColumn(name = "id"),
 			inverseJoinColumns = @JoinColumn(name = "brukernavn"))
-	private Set<Spiller> spillere;
+	private List<Spiller> spillere = new ArrayList<Spiller>();
 	
-	public Yatzy() {
-		
+
+	
+	@Override
+	public String toString() {
+		return "Yatzy [id=" + id + ", antall=" + antall + ", brett=" + brett + ", spillere=" + spillere + "]";
 	}
 
 
-	public int[][] getBrett() {
+	public String getBrett() {
 		return brett;
 	}
 
@@ -51,15 +68,19 @@ public class Yatzy {
 		this.antall = antall;
 	}
 
-	public Set<Spiller> getSpillere() {
+	public List<Spiller> getSpillere() {
 		return spillere;
 	}
 
-	public void setSpillere(Set<Spiller> spillere) {
+	public void setSpillere(List<Spiller> spillere) {
 		this.spillere = spillere;
 	}
+	
+	public void leggTilSpiller(Spiller spiller) {
+		this.spillere.add(spiller);
+	}
 
-	public void setBrett(int[][] brett) {
+	public void setBrett(String brett) {
 		this.brett = brett;
 	}
 	
