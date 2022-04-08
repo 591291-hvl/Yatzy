@@ -21,7 +21,14 @@ public class YatzyDAO {
 	public void lagNyttSpill(Yatzy yatzy) {
 		System.out.println("===========================");
 		em.persist(yatzy);
-
+	}
+	
+	public Yatzy finnSpillID(Integer spillID) {
+		return em.find(Yatzy.class, spillID);
+	}
+	
+	public boolean spillFinnes(Integer spillID) {
+		return finnSpillID(spillID) != null;
 	}
 
 }

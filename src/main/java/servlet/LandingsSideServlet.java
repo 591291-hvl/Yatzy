@@ -54,10 +54,16 @@ public class LandingsSideServlet extends HttpServlet {
 			//send to existing game, or error
 			String inpValue = request.getParameter("spillID");
 			if(inpValue.isBlank()) {
-				
 				request.getSession().setAttribute("spillKodeMelding", "Ingen spillkode");
 				response.sendRedirect("LandingsSideServlet");
 				return;
+			}
+			//wrong spillID
+			if(!yatzyDao.spillFinnes(Integer.parseInt(inpValue))) {
+				request.getSession().setAttribute("spillKodeMelding", "Feil spillkode");
+				response.sendRedirect("LandingsSideServlet");
+				return;
+			}else {//Riktig
 				
 			}
 			
@@ -68,8 +74,6 @@ public class LandingsSideServlet extends HttpServlet {
 		Yatzy yatzy = new Yatzy();
 		yatzy.setAntall(0);
 		yatzy.setBrett("");
-		System.out.println(yatzy.toString());
-		System.out.println((yatzyDao == null) + "==============================");
 		yatzyDao.lagNyttSpill(yatzy);
 		
 		
