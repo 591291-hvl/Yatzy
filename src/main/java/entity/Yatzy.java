@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
@@ -16,17 +17,10 @@ import javax.persistence.Table;
 @Table(name = "yatzy", schema = "yatzy")
 public class Yatzy {
 	
-	@Id
-	@GeneratedValue
-	private String id;
+	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
+	private Integer id;
 	private Integer antall;
 	private String brett;
-	
-	public Yatzy(Integer antall, String brett) {
-		super();
-		this.antall = antall;
-		this.brett = brett;
-	}
 	
 	
 	public Yatzy() {
@@ -52,11 +46,11 @@ public class Yatzy {
 		return brett;
 	}
 
-	public String getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

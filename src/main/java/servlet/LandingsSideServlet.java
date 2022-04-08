@@ -37,7 +37,7 @@ public class LandingsSideServlet extends HttpServlet {
 		// Setter deltagerene som atributt i requesten, hentes ut i jsp siden...
 		request.setAttribute("spillere", spillere);
 
-		// Gå til deltagerlisten
+		// Gï¿½ til deltagerlisten
 		request.getRequestDispatcher("WEB-INF/jsp/landingsside.jsp").forward(request, response);
 	}
 
@@ -55,7 +55,10 @@ public class LandingsSideServlet extends HttpServlet {
 		//Spiller spiller = (Spiller) request.getSession().getAttribute("spiller");
 		//System.out.println(spiller.toString());
 		Yatzy yatzy = new Yatzy();
+		yatzy.setAntall(0);
+		yatzy.setBrett("");
 		System.out.println(yatzy.toString());
+		System.out.println((yatzyDao == null) + "==============================");
 		yatzyDao.lagNyttSpill(yatzy);
 		
 		
