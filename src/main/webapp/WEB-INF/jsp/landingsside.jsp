@@ -21,11 +21,12 @@
                placeholder="Skriv inn spill kode"
                title="Koden innholder ofte tall"
            />
-          <span class="melding">${landingside.spillKodeMelding}</span>
+           <button type="submit" name="btn" value="bliMed" class="pure-button pure-button-primary">Bli med i spill</button>
+          <span class="melding"><c:out value="${spillKodeMelding}" /></span>
 	
 	
 	
-		<button type="submit" class="pure-button pure-button-primary">Lag nytt spill</button>
+		<button type="submit" name="btn" value="lagNy" class="pure-button pure-button-primary">Lag nytt spill</button>
 	</form>
 	
 	<table>

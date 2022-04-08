@@ -36,6 +36,8 @@ public class LandingsSideServlet extends HttpServlet {
 
 		// Setter deltagerene som atributt i requesten, hentes ut i jsp siden...
 		request.setAttribute("spillere", spillere);
+		
+		request.setAttribute("spillKodeMelding", request.getSession().getAttribute("spillKodeMelding"));
 
 		// G� til deltagerlisten
 		request.getRequestDispatcher("WEB-INF/jsp/landingsside.jsp").forward(request, response);
@@ -46,9 +48,18 @@ public class LandingsSideServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		String btnValue = request.getParameter("btn");
 		//check which button was pressed
-		if(true) {
+		if(btnValue.equals("bliMed")) {
 			//send to existing game, or error
+			String inpValue = request.getParameter("spillID");
+			if(inpValue.isBlank()) {
+				
+				request.getSession().setAttribute("spillKodeMelding", "Ingen spillkode");
+				response.sendRedirect("LandingsSideServlet");
+				return;
+				
+			}
 			
 		}
 		//create new game
