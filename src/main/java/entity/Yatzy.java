@@ -21,20 +21,23 @@ public class Yatzy {
 	private Integer id;
 	private Integer antall;
 	private String brett;
+
 	
+	@ManyToMany
+	@JoinTable(
+			name = "yatzy.spilldeltagelse",
+			joinColumns = @JoinColumn(name = "id"),
+			inverseJoinColumns = @JoinColumn(name = "brukernavn"))
+	private List<Spiller> spillere = new ArrayList<Spiller>();
 	
 	public Yatzy() {
 		super();
 	}
 	
-	@ManyToMany
-	@JoinTable(
-			name = "spilldeltagelse",
-			joinColumns = @JoinColumn(name = "id"),
-			inverseJoinColumns = @JoinColumn(name = "brukernavn"))
-	private List<Spiller> spillere = new ArrayList<Spiller>();
-	
-
+	public void leggTilSpiller(Spiller spiller) {
+        spillere.add(spiller);
+        spiller.getYatzy().add(this);
+    }
 	
 	@Override
 	public String toString() {
@@ -70,9 +73,7 @@ public class Yatzy {
 		this.spillere = spillere;
 	}
 	
-	public void leggTilSpiller(Spiller spiller) {
-		this.spillere.add(spiller);
-	}
+
 
 	public void setBrett(String brett) {
 		this.brett = brett;

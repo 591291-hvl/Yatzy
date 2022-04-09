@@ -1,5 +1,7 @@
 package entity;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Embedded;
@@ -17,21 +19,16 @@ public class Spiller implements Comparable<Spiller> {
 
 	@Id
 	private String brukernavn;
-	@Override
-	public String toString() {
-		return "Spiller [brukernavn=" + brukernavn + ", navn=" + navn + ", epost=" + epost + "]";
-	}
-
 	private String navn;
 	private String epost;
 	@Embedded
 	private Passord passordhash;
-	
+
 	@ManyToMany(mappedBy = "spillere")
-	private Set<Yatzy> yatzy;
+	private List<Yatzy> yatzy = new ArrayList<>();
 
 	public Spiller() {
-
+		super();
 	}
 
 	public Spiller(String brukernavn, String navn, String epost, Passord passordhash) {
@@ -39,6 +36,11 @@ public class Spiller implements Comparable<Spiller> {
 		this.navn = navn;
 		this.epost = epost;
 		this.passordhash = passordhash;
+	}
+
+	public void bliMedIYatzy(Yatzy yatzy) {
+		this.yatzy.add(yatzy);
+		yatzy.getSpillere().add(this);
 	}
 
 	public String getBrukernavn() {
@@ -96,5 +98,8 @@ public class Spiller implements Comparable<Spiller> {
 		return this.getBrukernavn().compareTo(that.getBrukernavn());
 	}
 
+	public List<Yatzy> getYatzy() {
+		return yatzy;
+	}
 
 }

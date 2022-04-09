@@ -25,6 +25,10 @@ public class SpillerDAO {
 	public List<Spiller> finnAlleEtterBrukernavn(){
 		return em.createQuery("SELECT d FROM Spiller d", Spiller.class).getResultList();
 	}
+	
+	public void update(Spiller spiller) {
+		em.merge(spiller);
+	}
 
 	public void lagre(Spiller spiller) {
 		em.persist(spiller);
@@ -33,4 +37,6 @@ public class SpillerDAO {
 	public void slett(Spiller spiller) {
 		em.remove(spiller);
 	}
+	
+	
 }
