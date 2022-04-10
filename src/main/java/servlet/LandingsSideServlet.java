@@ -29,15 +29,7 @@ public class LandingsSideServlet extends HttpServlet {
 //	private SpilldeltagelseDAO deltagelsDao;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// Henter alle deltagerene sortert etter navn
-		List<Spiller> spillere = spillerDao.finnAlleEtterBrukernavn();
 		
-		for(Spiller s : spillere) {
-			System.out.println(s.toString());
-		}
-
-		// Setter deltagerene som atributt i requesten, hentes ut i jsp siden...
-		request.setAttribute("spillere", spillere);
 		
 		request.setAttribute("spillKodeMelding", request.getSession().getAttribute("spillKodeMelding"));
 
@@ -68,12 +60,17 @@ public class LandingsSideServlet extends HttpServlet {
 			}else {//Riktig
 				//add user to game
 				//redirect to game side
-//				Spiller spiller = (Spiller) request.getSession().getAttribute("spiller");
-//				SpilldeltagelseEntityPK deltagelse = new SpilldeltagelseEntityPK();
-//				deltagelse.setBrukernavn(spiller.getBrukernavn());
-//				deltagelse.setId(Integer.parseInt(inpValue));
-//				deltagelsDao.lagre(deltagelse);
+				Spiller spiller = (Spiller) request.getSession().getAttribute("spiller");
 				
+				Yatzy yatzy = yatzyDao.finnSpillID(Integer.parseInt(inpValue));
+				
+				yatzy.leggTilSpiller(spiller);
+				yatzyDao.leggTilSpiller(yatzy, spiller);
+				
+				//yatzy in session
+				request.getSession().setAttribute("yatzy", yatzy);
+				
+				response.sendRedirect("LagSpillServlet");
 				
 				return;
 			}
@@ -89,6 +86,9 @@ public class LandingsSideServlet extends HttpServlet {
 		yatzy.leggTilSpiller(spiller);
 		yatzyDao.leggTilSpiller(yatzy, spiller);
 		
+		//yatzy in session
+		System.out.println("yatzy " + yatzy.toString());
+		request.getSession().setAttribute("yatzy", yatzy);
 		
 		response.sendRedirect("LagSpillServlet");
 		

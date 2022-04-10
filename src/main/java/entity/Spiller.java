@@ -38,6 +38,12 @@ public class Spiller implements Comparable<Spiller> {
 		this.passordhash = passordhash;
 	}
 
+	@Override
+	public String toString() {
+		return "Spiller [brukernavn=" + brukernavn + ", navn=" + navn + ", epost=" + epost + ", passordhash="
+				+ passordhash + "]";
+	}
+
 	public void bliMedIYatzy(Yatzy yatzy) {
 		this.yatzy.add(yatzy);
 		yatzy.getSpillere().add(this);

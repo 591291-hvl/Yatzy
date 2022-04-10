@@ -41,7 +41,7 @@ public class Yatzy {
 	
 	@Override
 	public String toString() {
-		return "Yatzy [id=" + id + ", antall=" + antall + ", brett=" + brett + ", spillere=" + spillere + "]";
+		return "Yatzy [id=" + id + ", antall=" + antall + ", brett=" + brett + "]";
 	}
 	
 	public void createBrett(int antallSpillere) {
@@ -82,7 +82,7 @@ public class Yatzy {
 		return brettArray;
 	}
 	
-	public String toString(int[][] brett) {
+	public String toArrayString(int[][] brett) {
 		String brettString = "";
 		
 		for(int i = 0; i < brett.length; i++) {
@@ -101,6 +101,7 @@ public class Yatzy {
 		return brettString;
 	}
 
+	
 
 	public String getBrett() {
 		return brett;
