@@ -43,6 +43,63 @@ public class Yatzy {
 	public String toString() {
 		return "Yatzy [id=" + id + ", antall=" + antall + ", brett=" + brett + ", spillere=" + spillere + "]";
 	}
+	
+	public void createBrett(int antallSpillere) {
+		String brettString = "";
+		
+		//Result should be:
+		// brett = "playerVal1,playerVal2,playerVal3-playerVal1,playerVal2,playerVal3
+		//unfolded to:
+		//int[][] = 
+		//{{playerVal1,playerVal2,PlayerVal3},{playerVal1,playerVal2,PlayerVal3}};
+		//Matrix dimensions are int[18][number of players]
+		for(int i = 0; i < 18; i++) {
+			for(int j = 0; j < antallSpillere; j++){
+				brettString += "0,";
+			}
+			brettString += "-";
+			
+		}
+		this.brett = brettString;
+	}
+	
+	public int[][] toArray(String brett, int antallSpillere){
+		int[][] brettArray = new int[18][antallSpillere]; 
+		
+		//size = 18;
+		String[] rundeRow = brett.split("-");
+		String[][] brettString = new String[rundeRow.length][antallSpillere]; 
+		for(int i = 0; i < rundeRow.length; i++) {
+			brettString[i] = rundeRow[i].split(",");
+		}
+		
+		for(int i = 0; i < brettString.length; i++){
+			for(int j = 0; j < brettString[i].length; j++) {
+				brettArray[i][j] = Integer.parseInt(brettString[i][j]);
+			}
+		}
+		
+		return brettArray;
+	}
+	
+	public String toString(int[][] brett) {
+		String brettString = "";
+		
+		for(int i = 0; i < brett.length; i++) {
+			for(int j = 0; j < brett[i].length; j++) {
+				brettString += brett[i][j] + "";
+				if(j != brett[i].length-1) {
+					brettString += ",";
+				}
+			}
+			if(i != brett.length -1) {
+				brettString += "-";
+			}
+			
+		}
+		
+		return brettString;
+	}
 
 
 	public String getBrett() {
