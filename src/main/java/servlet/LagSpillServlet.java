@@ -54,7 +54,27 @@ public class LagSpillServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		response.sendRedirect("LagSpillServlet");
+		
+		//user starts game
+		int yatzyID = (int) request.getSession().getAttribute("yatzyID");
+		Yatzy yatzy = yatzyDao.finnSpillID(yatzyID);
+		
+		yatzy.setAktiv(1);
+		
+		yatzyDao.update(yatzy);
+		
+		//error message
+//		if(false) {
+//			
+//			response.sendRedirect("LagSpillServlet");
+//			return;
+//			
+//		}
+		
+		//send ny page
+		response.sendRedirect("SpillServlet");
+		
+		
 
 	}
 }

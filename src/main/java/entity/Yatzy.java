@@ -20,6 +20,7 @@ public class Yatzy {
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 	private Integer antall;
+	private Integer aktiv;
 	private String brett;
 
 	
@@ -34,6 +35,17 @@ public class Yatzy {
 		super();
 	}
 	
+	public void opprettSpill() {
+		antall = 0;
+		aktiv = 0;
+		brett = "";
+	}
+	
+	public void startSpill() {
+		aktiv = 1;
+		createBrett(antall);
+	}
+	
 	public void leggTilSpiller(Spiller spiller) {
         spillere.add(spiller);
         antall++;
@@ -42,7 +54,7 @@ public class Yatzy {
 	
 	@Override
 	public String toString() {
-		return "Yatzy [id=" + id + ", antall=" + antall + ", brett=" + brett + "]";
+		return "Yatzy [id=" + id + ", antall=" + antall + "aktiv=" + aktiv + ", brett=" + brett + "]";
 	}
 	
 	public void createBrett(int antallSpillere) {
@@ -136,6 +148,14 @@ public class Yatzy {
 
 	public void setBrett(String brett) {
 		this.brett = brett;
+	}
+
+	public Integer getAktiv() {
+		return aktiv;
+	}
+
+	public void setAktiv(Integer aktiv) {
+		this.aktiv = aktiv;
 	}
 	
 }

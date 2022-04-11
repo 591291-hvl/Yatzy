@@ -77,8 +77,8 @@ public class LandingsSideServlet extends HttpServlet {
 		//create new game
 		Spiller spiller = (Spiller) request.getSession().getAttribute("spiller");
 		Yatzy yatzy = new Yatzy();
-		yatzy.setAntall(0);
-		yatzy.setBrett("");
+		yatzy.opprettSpill();
+
 		yatzyDao.lagNyttSpill(yatzy);
 		
 		yatzyDao.leggTilSpiller(yatzy, spiller);

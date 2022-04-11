@@ -19,6 +19,7 @@
 	
 	
 	
+	<p>Spillere med i spillet</p>
 	<table>
 	<tr bgcolor="#cccccc">
 			<th align="left">Brukernavn</th>
@@ -34,5 +35,13 @@
 		</tr>
 	</c:forEach>
 	</table>
+	
+	
+	<form method="post">
+		<button type="submit" name="btn" value="btnStart" class="pure-button pure-button-primary">Start spill</button>
+		<span class="melding"><c:out value="${spillStartMelding}" /></span>
+	
+	</form>
+	
 </body>
 </html>
