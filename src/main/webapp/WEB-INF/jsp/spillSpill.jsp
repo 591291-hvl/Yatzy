@@ -143,9 +143,11 @@ input#dice5[type=checkbox]:checked+label {
 				id="dice<c:out value="${terninger[i]}" />"
 				value="dice<c:out value="${terninger[i]}" />" />
 			<label for="dice<c:out value="${terninger[i]}" />"
-				style="background-image: url('images/Terning<c:out value="${terninger[i]}.jpg'" />)"></label>
+				style="background-image: url('images/<c:out value="${terninger[i]}.png'" />)"></label>
 		</c:forEach>
 
+	<button type="submit" name="btn" value="btnStart" class="pure-button pure-button-primary">Behold terninger</button>
+		
 
 	</form>
 
