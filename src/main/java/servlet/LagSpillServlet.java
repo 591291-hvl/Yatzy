@@ -21,26 +21,27 @@ public class LagSpillServlet extends HttpServlet {
 	
 	@EJB
 	private SpillerDAO spillerDao;
+	@EJB
+	private YatzyDAO yatzyDao;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		List<Spiller> spillere = spillerDao.finnAlleEtterBrukernavn();
 
-		for (Spiller s : spillere) {
-			System.out.println(s.toString());
-		}
-		
 		//get yatzy game code(id)
-		Yatzy yatzy = (Yatzy) request.getSession().getAttribute("yatzy");
+		int yatzyID = (int) request.getSession().getAttribute("yatzyID");
+		Yatzy yatzy = yatzyDao.finnSpillID(yatzyID);
 		
-		System.out.println("yatzy " + yatzy.toString());
 		
-		System.out.println("yatzyID" + yatzy.getId());
+		List<Spiller> spillere =  yatzy.getSpillere();
 		
 		request.setAttribute("yatzyID", yatzy.getId());
 
 		request.setAttribute("spillere", spillere);
+		
+		for (Spiller s : spillere) {
+			System.out.println(s.toString());
+		}
 		
 		request.getRequestDispatcher("WEB-INF/jsp/lagSpill.jsp").forward(request, response);
 

@@ -36,6 +36,7 @@ public class Yatzy {
 	
 	public void leggTilSpiller(Spiller spiller) {
         spillere.add(spiller);
+        antall++;
         spiller.getYatzy().add(this);
     }
 	

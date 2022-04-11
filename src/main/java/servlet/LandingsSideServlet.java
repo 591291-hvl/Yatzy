@@ -25,8 +25,6 @@ public class LandingsSideServlet extends HttpServlet {
 	private SpillerDAO spillerDao;
 	@EJB
 	private YatzyDAO yatzyDao;
-//	@EJB
-//	private SpilldeltagelseDAO deltagelsDao;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
@@ -64,11 +62,11 @@ public class LandingsSideServlet extends HttpServlet {
 				
 				Yatzy yatzy = yatzyDao.finnSpillID(Integer.parseInt(inpValue));
 				
-				yatzy.leggTilSpiller(spiller);
 				yatzyDao.leggTilSpiller(yatzy, spiller);
 				
-				//yatzy in session
-				request.getSession().setAttribute("yatzy", yatzy);
+				//yatzyid in session
+//				request.getSession().setAttribute("yatzy", yatzy);
+				request.getSession().setAttribute("yatzyID", yatzy.getId());
 				
 				response.sendRedirect("LagSpillServlet");
 				
@@ -83,12 +81,11 @@ public class LandingsSideServlet extends HttpServlet {
 		yatzy.setBrett("");
 		yatzyDao.lagNyttSpill(yatzy);
 		
-		yatzy.leggTilSpiller(spiller);
 		yatzyDao.leggTilSpiller(yatzy, spiller);
 		
-		//yatzy in session
-		System.out.println("yatzy " + yatzy.toString());
-		request.getSession().setAttribute("yatzy", yatzy);
+		//yatzyid in session
+//		request.getSession().setAttribute("yatzy", yatzy);
+		request.getSession().setAttribute("yatzyID", yatzy.getId());
 		
 		response.sendRedirect("LagSpillServlet");
 		

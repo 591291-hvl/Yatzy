@@ -26,6 +26,7 @@ public class SpillerDAO {
 		return em.createQuery("SELECT d FROM Spiller d", Spiller.class).getResultList();
 	}
 	
+	
 	public void update(Spiller spiller) {
 		em.merge(spiller);
 	}
