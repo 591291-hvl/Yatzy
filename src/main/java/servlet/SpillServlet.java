@@ -54,6 +54,10 @@ public class SpillServlet extends HttpServlet {
 
 		String[] rowInfo = board.getRowInfo();
 		request.setAttribute("rowInfo", rowInfo);
+		
+		//Terninger
+		int[] terninger = {1,2,3,4,5};
+		request.setAttribute("terninger", terninger);
 
 		request.getRequestDispatcher("WEB-INF/jsp/spillSpill.jsp").forward(request, response);
 
@@ -70,7 +74,15 @@ public class SpillServlet extends HttpServlet {
 		
 		
 		//game logic
-//		Yatzy yatzy = new Yatzy();
+		
+		//each time servlet gets a post:
+		
+		//it needs to check who sendt, and how many times prior
+		
+		//post contains 5 "boolean" values, dices to lock
+		
+		//after reciving 2 times, game needs to update value in table
+		//and then change playing user
 		
 		response.sendRedirect("SpillServlet");
 	}
