@@ -32,6 +32,12 @@ public class LagSpillServlet extends HttpServlet {
 		int yatzyID = (int) request.getSession().getAttribute("yatzyID");
 		Yatzy yatzy = yatzyDao.finnSpillID(yatzyID);
 		
+		//game is started, send others to game page
+		if(yatzy.getAktiv() == 1) {
+			response.sendRedirect("SpillServlet");
+			return;
+		}
+		
 		
 		List<Spiller> spillere =  yatzy.getSpillere();
 		
@@ -59,7 +65,7 @@ public class LagSpillServlet extends HttpServlet {
 		int yatzyID = (int) request.getSession().getAttribute("yatzyID");
 		Yatzy yatzy = yatzyDao.finnSpillID(yatzyID);
 		
-		yatzy.setAktiv(1);
+		yatzy.startSpill();
 		
 		yatzyDao.update(yatzy);
 		

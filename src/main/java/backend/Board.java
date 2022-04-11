@@ -102,4 +102,8 @@ public class Board {
 
         return outString;
     }
+    
+    public String[] getRowInfo() {
+    	return rowInfo;
+    }
 }

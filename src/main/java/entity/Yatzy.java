@@ -43,7 +43,7 @@ public class Yatzy {
 	
 	public void startSpill() {
 		aktiv = 1;
-		createBrett(antall);
+		createBrett();
 	}
 	
 	public void leggTilSpiller(Spiller spiller) {
@@ -57,7 +57,7 @@ public class Yatzy {
 		return "Yatzy [id=" + id + ", antall=" + antall + "aktiv=" + aktiv + ", brett=" + brett + "]";
 	}
 	
-	public void createBrett(int antallSpillere) {
+	public void createBrett() {
 		String brettString = "";
 		
 		//Result should be:
@@ -67,7 +67,7 @@ public class Yatzy {
 		//{{playerVal1,playerVal2,PlayerVal3},{playerVal1,playerVal2,PlayerVal3}};
 		//Matrix dimensions are int[18][number of players]
 		for(int i = 0; i < 18; i++) {
-			for(int j = 0; j < antallSpillere; j++){
+			for(int j = 0; j < antall; j++){
 				brettString += "0,";
 			}
 			brettString += "-";
@@ -76,12 +76,12 @@ public class Yatzy {
 		this.brett = brettString;
 	}
 	
-	public int[][] toArray(String brett, int antallSpillere){
-		int[][] brettArray = new int[18][antallSpillere]; 
+	public int[][] toArray(){
+		int[][] brettArray = new int[18][antall]; 
 		
 		//size = 18;
 		String[] rundeRow = brett.split("-");
-		String[][] brettString = new String[rundeRow.length][antallSpillere]; 
+		String[][] brettString = new String[rundeRow.length][antall]; 
 		for(int i = 0; i < rundeRow.length; i++) {
 			brettString[i] = rundeRow[i].split(",");
 		}
