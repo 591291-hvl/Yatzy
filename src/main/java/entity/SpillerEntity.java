@@ -15,7 +15,7 @@ import password.Passord;
 
 @Entity
 @Table(name = "spiller", schema = "yatzy")
-public class Spiller implements Comparable<Spiller> {
+public class SpillerEntity implements Comparable<SpillerEntity> {
 
 	@Id
 	private String brukernavn;
@@ -25,13 +25,13 @@ public class Spiller implements Comparable<Spiller> {
 	private Passord passordhash;
 
 	@ManyToMany(mappedBy = "spillere")
-	private List<Yatzy> yatzy = new ArrayList<>();
+	private List<YatzyEntity> yatzy = new ArrayList<>();
 
-	public Spiller() {
+	public SpillerEntity() {
 		super();
 	}
 
-	public Spiller(String brukernavn, String navn, String epost, Passord passordhash) {
+	public SpillerEntity(String brukernavn, String navn, String epost, Passord passordhash) {
 		this.brukernavn = brukernavn;
 		this.navn = navn;
 		this.epost = epost;
@@ -44,7 +44,7 @@ public class Spiller implements Comparable<Spiller> {
 				+ passordhash + "]";
 	}
 
-	public void bliMedIYatzy(Yatzy yatzy) {
+	public void bliMedIYatzy(YatzyEntity yatzy) {
 		this.yatzy.add(yatzy);
 		yatzy.getSpillere().add(this);
 	}
@@ -95,16 +95,16 @@ public class Spiller implements Comparable<Spiller> {
 
 	@Override
 	public boolean equals(Object obj) {
-		Spiller other = (Spiller) obj;
+		SpillerEntity other = (SpillerEntity) obj;
 		return this.getBrukernavn().equals(other.getBrukernavn());
 	}
 
 	@Override
-	public int compareTo(Spiller that) {
+	public int compareTo(SpillerEntity that) {
 		return this.getBrukernavn().compareTo(that.getBrukernavn());
 	}
 
-	public List<Yatzy> getYatzy() {
+	public List<YatzyEntity> getYatzy() {
 		return yatzy;
 	}
 

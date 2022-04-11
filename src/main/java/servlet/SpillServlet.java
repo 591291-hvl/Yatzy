@@ -13,8 +13,10 @@ import javax.servlet.http.HttpServletResponse;
 import backend.Board;
 import dao.SpillerDAO;
 import dao.YatzyDAO;
-import entity.Spiller;
-import entity.Yatzy;
+import entity.SpillerEntity;
+import entity.YatzyEntity;
+
+import backend.Yatzy;
 
 /**
  * Servlet implementation class SpillServlet
@@ -37,14 +39,14 @@ public class SpillServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 
 		int yatzyID = (int) request.getSession().getAttribute("yatzyID");
-		Yatzy yatzy = yatzyDao.finnSpillID(yatzyID);
+		YatzyEntity yatzy = yatzyDao.finnSpillID(yatzyID);
 
 		// get board
 		int[][] brettArray = yatzy.toArray();
 		request.setAttribute("brett", brettArray);
 
 		// get players
-		List<Spiller> spillere = yatzy.getSpillere();
+		List<SpillerEntity> spillere = yatzy.getSpillere();
 		request.setAttribute("spillere", spillere);
 
 		// get brettInfo
@@ -64,7 +66,12 @@ public class SpillServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-
+		
+		
+		
+		//game logic
+//		Yatzy yatzy = new Yatzy();
+		
 		response.sendRedirect("SpillServlet");
 	}
 

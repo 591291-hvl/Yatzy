@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dao.SpillerDAO;
-import entity.Spiller;
+import entity.SpillerEntity;
 import servletUtil.SpillerForm;
 
 
@@ -34,7 +34,7 @@ public class RegistrerServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		// Lager spillerForm objekt (hjelpeklasse) og fyller inn med opplysningene
-		// opgitt i skjemaet på nettsiden
+		// opgitt i skjemaet pï¿½ nettsiden
 		SpillerForm spillerForm = new SpillerForm();
 		spillerForm.populerFraRequestOgSettOppEvtFeilmeldinger(request, spillerDao);
 
@@ -45,7 +45,7 @@ public class RegistrerServlet extends HttpServlet {
 		if (spillerForm.isAlleGyldig() && !erRegistrert) {
 
 			// Lager en spiller fra opplysningene i skjemaet
-			Spiller spiller = spillerForm.lagSpillerFraForm();
+			SpillerEntity spiller = spillerForm.lagSpillerFraForm();
 
 			// Lager en session
 			HttpSession sesjon = request.getSession(true);
@@ -67,10 +67,10 @@ public class RegistrerServlet extends HttpServlet {
 
 		} else {
 
-			// Legger spiller form som atributt i sesjonen for å vise evt feilmeldinger
+			// Legger spiller form som atributt i sesjonen for ï¿½ vise evt feilmeldinger
 			request.getSession().setAttribute("spillerForm", spillerForm);
 
-			// Laster inn siden på nytt med feilmeldinger
+			// Laster inn siden pï¿½ nytt med feilmeldinger
 			response.sendRedirect("RegistrerServlet");
 
 		}

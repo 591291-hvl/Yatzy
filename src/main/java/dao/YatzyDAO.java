@@ -6,8 +6,8 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import entity.Spiller;
-import entity.Yatzy;
+import entity.SpillerEntity;
+import entity.YatzyEntity;
 
 @Stateless
 public class YatzyDAO {
@@ -15,28 +15,28 @@ public class YatzyDAO {
 	@PersistenceContext(name = "yatzyPU")
 	private EntityManager em;
 
-	public List<Yatzy> finnAlleSpill() {
-		return em.createQuery("SELECT y FROM yatzy y ORDER BY y.id ASC", Yatzy.class).getResultList();
+	public List<YatzyEntity> finnAlleSpill() {
+		return em.createQuery("SELECT y FROM yatzy y ORDER BY y.id ASC", YatzyEntity.class).getResultList();
 	}
 	
 
 	
-	public void leggTilSpiller(Yatzy yatzy, Spiller spiller) {
+	public void leggTilSpiller(YatzyEntity yatzy, SpillerEntity spiller) {
         yatzy.leggTilSpiller(spiller);
         em.merge(yatzy);
     }
 
-	public void lagNyttSpill(Yatzy yatzy) {
+	public void lagNyttSpill(YatzyEntity yatzy) {
 		System.out.println("===========================");
 		em.persist(yatzy);
 	}
 	
-	public void update(Yatzy yatzy) {
+	public void update(YatzyEntity yatzy) {
 		em.merge(yatzy);
 	}
 	
-	public Yatzy finnSpillID(Integer spillID) {
-		return em.find(Yatzy.class, spillID);
+	public YatzyEntity finnSpillID(Integer spillID) {
+		return em.find(YatzyEntity.class, spillID);
 	}
 	
 	public boolean spillFinnes(Integer spillID) {

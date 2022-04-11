@@ -3,7 +3,7 @@ package servletUtil;
 import javax.servlet.http.HttpServletRequest;
 
 import dao.SpillerDAO;
-import entity.Spiller;
+import entity.SpillerEntity;
 import password.Passord;
 import password.Validator;
 
@@ -27,9 +27,9 @@ public class SpillerForm {
 
 	private boolean alleGyldig;
 
-	public Spiller lagSpillerFraForm() {
+	public SpillerEntity lagSpillerFraForm() {
 		Passord passordHash = Passord.lagPassord(passord);
-		return new Spiller(brukernavn, navn, epost, passordHash);
+		return new SpillerEntity(brukernavn, navn, epost, passordHash);
 	}
 
 	public void populerFraRequestOgSettOppEvtFeilmeldinger(HttpServletRequest request, SpillerDAO spillerDao) {
@@ -71,14 +71,14 @@ public class SpillerForm {
 
 		boolean passordOk = Validator.isValidPassord(passord);
 		if (!passordOk) {
-			passord = ""; // Kanskje passord burde vært blanket ut uansett?!
+			passord = ""; // Kanskje passord burde vï¿½rt blanket ut uansett?!
 			passordMelding = "Ugyldig passord";
 		}
 
 		boolean passordRepOk = passordOk && passord.equals(passordRepetert);
 		if (!passordRepOk) {
-			passordRepetert = ""; // Kanskje passord burde vært blanket ut uansett?!
-			passordRepetertMelding = "Passordene må være like";
+			passordRepetert = ""; // Kanskje passord burde vï¿½rt blanket ut uansett?!
+			passordRepetertMelding = "Passordene mï¿½ vï¿½re like";
 		}
 
 		alleGyldig = brukernavnOk && navnOk && epostOk && !finnesAllerede && passordOk && passordRepOk;

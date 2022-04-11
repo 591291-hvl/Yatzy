@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dao.SpillerDAO;
-import entity.Spiller;
+import entity.SpillerEntity;
 import password.PassordUtil;
 
 
@@ -36,7 +36,7 @@ public class LoggInnServlet extends HttpServlet {
 		String passord = request.getParameter("passord");
 
 		// Henter spiller med oppgitt mobilnr
-		Spiller spiller = spillerDao.finnMedBrukernavn(brukernavn);
+		SpillerEntity spiller = spillerDao.finnMedBrukernavn(brukernavn);
 
 		// Deltager finnes i databasen
 		if (spiller != null) {
@@ -51,7 +51,7 @@ public class LoggInnServlet extends HttpServlet {
 				HttpSession sesjon = request.getSession(true);
 				sesjon.setAttribute("spiller", spiller);
 
-				// Sender den ferdig innloggede spilleren videre til å velge yatzy spill
+				// Sender den ferdig innloggede spilleren videre til ï¿½ velge yatzy spill
 				response.sendRedirect("LandingsSideServlet");
 
 			} else { // Passord er feil

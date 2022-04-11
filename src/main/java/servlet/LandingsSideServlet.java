@@ -13,8 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import dao.SpillerDAO;
 import dao.YatzyDAO;
-import entity.Spiller;
-import entity.Yatzy;
+import entity.SpillerEntity;
+import entity.YatzyEntity;
 
 
 @WebServlet(name = "LandingsSideServlet", urlPatterns = "/LandingsSideServlet")
@@ -58,9 +58,9 @@ public class LandingsSideServlet extends HttpServlet {
 			}else {//Riktig
 				//add user to game
 				//redirect to game side
-				Spiller spiller = (Spiller) request.getSession().getAttribute("spiller");
+				SpillerEntity spiller = (SpillerEntity) request.getSession().getAttribute("spiller");
 				
-				Yatzy yatzy = yatzyDao.finnSpillID(Integer.parseInt(inpValue));
+				YatzyEntity yatzy = yatzyDao.finnSpillID(Integer.parseInt(inpValue));
 				
 				yatzyDao.leggTilSpiller(yatzy, spiller);
 				
@@ -75,8 +75,8 @@ public class LandingsSideServlet extends HttpServlet {
 			
 		}
 		//create new game
-		Spiller spiller = (Spiller) request.getSession().getAttribute("spiller");
-		Yatzy yatzy = new Yatzy();
+		SpillerEntity spiller = (SpillerEntity) request.getSession().getAttribute("spiller");
+		YatzyEntity yatzy = new YatzyEntity();
 		yatzy.opprettSpill();
 
 		yatzyDao.lagNyttSpill(yatzy);

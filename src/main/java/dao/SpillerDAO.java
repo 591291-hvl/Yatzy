@@ -1,6 +1,6 @@
 package dao;
 
-import entity.Spiller;
+import entity.SpillerEntity;
 
 
 import java.util.List;
@@ -14,28 +14,28 @@ public class SpillerDAO {
 	@PersistenceContext(name = "yatzyPU")
 	private EntityManager em;
 
-	public Spiller finnMedBrukernavn(String brukernavn) {
-		return em.find(Spiller.class, brukernavn);
+	public SpillerEntity finnMedBrukernavn(String brukernavn) {
+		return em.find(SpillerEntity.class, brukernavn);
 	}
 	
 	public boolean erRegistrert(String brukernavn) {
 		return finnMedBrukernavn(brukernavn) != null;
 	}
 
-	public List<Spiller> finnAlleEtterBrukernavn(){
-		return em.createQuery("SELECT d FROM Spiller d", Spiller.class).getResultList();
+	public List<SpillerEntity> finnAlleEtterBrukernavn(){
+		return em.createQuery("SELECT d FROM Spiller d", SpillerEntity.class).getResultList();
 	}
 	
 	
-	public void update(Spiller spiller) {
+	public void update(SpillerEntity spiller) {
 		em.merge(spiller);
 	}
 
-	public void lagre(Spiller spiller) {
+	public void lagre(SpillerEntity spiller) {
 		em.persist(spiller);
 	}
 	
-	public void slett(Spiller spiller) {
+	public void slett(SpillerEntity spiller) {
 		em.remove(spiller);
 	}
 	

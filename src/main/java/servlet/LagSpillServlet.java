@@ -12,8 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import dao.SpillerDAO;
 import dao.YatzyDAO;
-import entity.Spiller;
-import entity.Yatzy;
+import entity.SpillerEntity;
+import entity.YatzyEntity;
 
 @WebServlet(name = "LagSpillServlet", urlPatterns = "/LagSpillServlet")
 public class LagSpillServlet extends HttpServlet {
@@ -30,7 +30,7 @@ public class LagSpillServlet extends HttpServlet {
 
 		//get yatzy game code(id)
 		int yatzyID = (int) request.getSession().getAttribute("yatzyID");
-		Yatzy yatzy = yatzyDao.finnSpillID(yatzyID);
+		YatzyEntity yatzy = yatzyDao.finnSpillID(yatzyID);
 		
 		//game is started, send others to game page
 		if(yatzy.getAktiv() == 1) {
@@ -39,13 +39,13 @@ public class LagSpillServlet extends HttpServlet {
 		}
 		
 		
-		List<Spiller> spillere =  yatzy.getSpillere();
+		List<SpillerEntity> spillere =  yatzy.getSpillere();
 		
 		request.setAttribute("yatzyID", yatzy.getId());
 
 		request.setAttribute("spillere", spillere);
 		
-		for (Spiller s : spillere) {
+		for (SpillerEntity s : spillere) {
 			System.out.println(s.toString());
 		}
 		
@@ -63,7 +63,7 @@ public class LagSpillServlet extends HttpServlet {
 		
 		//user starts game
 		int yatzyID = (int) request.getSession().getAttribute("yatzyID");
-		Yatzy yatzy = yatzyDao.finnSpillID(yatzyID);
+		YatzyEntity yatzy = yatzyDao.finnSpillID(yatzyID);
 		
 		yatzy.startSpill();
 		

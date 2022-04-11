@@ -15,7 +15,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "yatzy", schema = "yatzy")
-public class Yatzy {
+public class YatzyEntity {
 	
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
@@ -29,9 +29,9 @@ public class Yatzy {
 			name = "yatzy.spilldeltagelse",
 			joinColumns = @JoinColumn(name = "id"),
 			inverseJoinColumns = @JoinColumn(name = "brukernavn"))
-	private List<Spiller> spillere = new ArrayList<Spiller>();
+	private List<SpillerEntity> spillere = new ArrayList<SpillerEntity>();
 	
-	public Yatzy() {
+	public YatzyEntity() {
 		super();
 	}
 	
@@ -46,7 +46,7 @@ public class Yatzy {
 		createBrett();
 	}
 	
-	public void leggTilSpiller(Spiller spiller) {
+	public void leggTilSpiller(SpillerEntity spiller) {
         spillere.add(spiller);
         antall++;
         spiller.getYatzy().add(this);
@@ -68,9 +68,16 @@ public class Yatzy {
 		//Matrix dimensions are int[18][number of players]
 		for(int i = 0; i < 18; i++) {
 			for(int j = 0; j < antall; j++){
-				brettString += "0,";
+				brettString += "0";
+				if(j != antall-1) {
+					brettString += ",";
+				}
+				
 			}
-			brettString += "-";
+			if(i != 18-1) {
+				brettString += ".";
+			}
+			
 			
 		}
 		this.brett = brettString;
@@ -80,7 +87,7 @@ public class Yatzy {
 		int[][] brettArray = new int[18][antall]; 
 		
 		//size = 18;
-		String[] rundeRow = brett.split("-");
+		String[] rundeRow = brett.split("\\.");
 		String[][] brettString = new String[rundeRow.length][antall]; 
 		for(int i = 0; i < rundeRow.length; i++) {
 			brettString[i] = rundeRow[i].split(",");
@@ -106,7 +113,7 @@ public class Yatzy {
 				}
 			}
 			if(i != brett.length -1) {
-				brettString += "-";
+				brettString += ".";
 			}
 			
 		}
@@ -136,11 +143,11 @@ public class Yatzy {
 		this.antall = antall;
 	}
 
-	public List<Spiller> getSpillere() {
+	public List<SpillerEntity> getSpillere() {
 		return spillere;
 	}
 
-	public void setSpillere(List<Spiller> spillere) {
+	public void setSpillere(List<SpillerEntity> spillere) {
 		this.spillere = spillere;
 	}
 	
