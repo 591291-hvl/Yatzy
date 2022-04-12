@@ -12,7 +12,7 @@ public class DiceShaker {
 
     /**
      * Container for multiple dices
-     * Creates terning in kopp
+     * Creates terning in shaker
      */
     public DiceShaker(int numberOfDices) {
         this.shaker = new Dice[numberOfDices];
@@ -22,6 +22,19 @@ public class DiceShaker {
             shaker[i] = new Dice();
         }
 
+    }
+    
+    /**
+     * creates a shaker from int array
+     * @param dice value array
+     */
+    public DiceShaker(int[] dices) {
+    	this.shaker = new Dice[dices.length];
+    	this.numberOfDices = dices.length;
+
+        for (int i = 0; i < numberOfDices; i = -~i) {
+            shaker[i] = new Dice(dices[i]);
+        }
     }
 
     /**

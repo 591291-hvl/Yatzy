@@ -20,6 +20,15 @@ public class Dice {
         this.value = -1;
         this.locked = false;
     }
+    
+    /**
+     * create dice with a value
+     * @param value of dice
+     */
+    public Dice(int value) {
+    	this.value = value;
+        this.locked = false;
+    }
 
     /**
      * Gets current dice value

@@ -57,6 +57,14 @@ public class YatzyEntity {
 		terningArryToString(shaker.getDiceValue());
 	}
 	
+	public void trillTerning(int[] terninger, int[] beholdTerning) {
+		DiceShaker shaker = new DiceShaker(terninger);
+		shaker.lockDice(beholdTerning);
+		shaker.shakeDice();
+		terningArryToString(shaker.getDiceValue());
+		
+	}
+	
 	public void leggTilSpiller(SpillerEntity spiller) {
         spillere.add(spiller);
         antall++;
@@ -113,7 +121,7 @@ public class YatzyEntity {
 		return brettArray;
 	}
 	
-	public String toArrayString(int[][] brett) {
+	public void toArrayString(int[][] brett) {
 		String brettString = "";
 		
 		for(int i = 0; i < brett.length; i++) {
@@ -129,7 +137,7 @@ public class YatzyEntity {
 			
 		}
 		
-		return brettString;
+		this.brett = brettString;
 	}
 	
 	public int[] getTerningArray() {

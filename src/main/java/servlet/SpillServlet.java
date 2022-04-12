@@ -101,13 +101,35 @@ public class SpillServlet extends HttpServlet {
 		//get dices
 		String[] names = request.getParameterValues("dices");
 		
-		int[] diceVal = new int[names.length];
-		for(int i = 0; i < names.length; i++) {
-			diceVal[i] = Integer.parseInt(names[i].substring(4));
-			System.out.print(diceVal[i] + " ");
+		int[] diceVal;
+		
+		//when no dices keep, gives null
+		if(names == null){
+			diceVal = new int[0];
+		}else {
+			diceVal = new int[names.length];
+			for(int i = 0; i < names.length; i++) {
+				diceVal[i] = Integer.parseInt(names[i].substring(4))-1;
+				System.out.print(diceVal[i] + " ");
+			}
 		}
 		
 		
+		
+		
+		//roll dices
+		yatzy.setTurnsPlayed(yatzy.getTurnsPlayed()+1);
+		yatzy.trillTerning(yatzy.getTerningArray(), diceVal);
+		
+		if(yatzy.getTurnsPlayed() == 2) {
+			//bord value
+			
+			//player turn
+			yatzy.setTurnsPlayed(0);
+			yatzy.setPlayerTurn(yatzy.getPlayerTurn() + 1 % yatzy.getAntall());
+		}
+		
+		yatzyDao.update(yatzy);
 		
 		
 		
