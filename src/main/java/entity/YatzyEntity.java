@@ -21,6 +21,8 @@ public class YatzyEntity {
 	private Integer id;
 	private Integer antall;
 	private Integer aktiv;
+	private Integer playerTurn;
+	private Integer turnsPlayed;
 	private String brett;
 
 	

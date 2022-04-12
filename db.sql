@@ -17,6 +17,8 @@ CREATE TABLE yatzy
     id INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY,
     antall INTEGER,
     aktiv INTEGER,
+    playerTurn INTEGER,
+    turnsPlayed INTEGER,
     brett VARCHAR,
     PRIMARY KEY (id)
 );
