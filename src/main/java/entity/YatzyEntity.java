@@ -23,6 +23,7 @@ public class YatzyEntity {
 	private Integer id;
 	private Integer antall;
 	private Integer aktiv;
+	private Integer runde;
 	private Integer playerTurn;
 	private Integer turnsPlayed;
 	private String brett;
@@ -43,6 +44,7 @@ public class YatzyEntity {
 	public void opprettSpill() {
 		antall = 0;
 		aktiv = 0;
+		runde = 0;
 		playerTurn = 0;
 		turnsPlayed = 0;
 		brett = "";
@@ -225,6 +227,14 @@ public class YatzyEntity {
 
 	public void setTerninger(String terninger) {
 		this.terninger = terninger;
+	}
+
+	public Integer getRunde() {
+		return runde;
+	}
+
+	public void setRunde(Integer runde) {
+		this.runde = runde;
 	}
 	
 }

@@ -44,6 +44,15 @@ public class Board {
         this.numberOfPlayers = numberOfPlayers;
 
     }
+    
+    /**
+     * used for lazy frontend:)
+     * @param board matrix
+     */
+    public Board(int[][] board) {
+    	this.board = board;
+    	this.numberOfPlayers = board[0].length;
+    }
 
     /**
      * @return board

@@ -40,6 +40,17 @@ public class Yatzy {
         //board
         this.board = new Board(numberOfPlayers);
     }
+    
+    /**
+     * used for lazy frontend:)
+     */
+    public Yatzy(int[][] board) {
+    	this.board = new Board(board);
+    }
+    
+    public Board getBoard() {
+    	return board;
+    }
 
 
     /**

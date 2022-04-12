@@ -123,7 +123,10 @@ public class SpillServlet extends HttpServlet {
 		
 		if(yatzy.getTurnsPlayed() == 2) {
 			//bord value
-			
+			Yatzy yatzyGame = new Yatzy(yatzy.toArray());
+			yatzyGame.gameLogic(yatzy.getPlayerTurn(), yatzy.getRunde()+1, yatzy.getTerningArray());
+			yatzy.toArrayString(yatzyGame.getBoard().getBoard());
+			yatzy.setRunde(yatzy.getRunde()+1);
 			//player turn
 			yatzy.setTurnsPlayed(0);
 			yatzy.setPlayerTurn(yatzy.getPlayerTurn() + 1 % yatzy.getAntall());
