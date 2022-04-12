@@ -129,7 +129,19 @@ input#dice5[type=checkbox]:checked+label {
 			<tr>
 				<td><c:out value="${rowInfo[i]}" /></td>
 				<c:forEach begin="0" end="${fn:length(brett[i]) - 1}" var="j">
-					<td><c:out value="${brett[i][j]}" /></td>
+				
+				<c:choose>
+				<c:when test="${row eq i and collum eq j}">
+				<td bgcolor="#aaffaa"><c:out value="${brett[i][j]}" /></td>
+				</c:when>
+				<c:otherwise>
+				<td><c:out value="${brett[i][j]}" /></td>
+				</c:otherwise>
+				</c:choose>
+				
+					
+				
+				
 				</c:forEach>
 			</tr>
 		</c:forEach>

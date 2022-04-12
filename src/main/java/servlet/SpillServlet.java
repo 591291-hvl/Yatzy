@@ -56,9 +56,15 @@ public class SpillServlet extends HttpServlet {
 		String[] rowInfo = board.getRowInfo();
 		request.setAttribute("rowInfo", rowInfo);
 		
+		// show cell playing for
+		request.setAttribute("row", yatzy.getRunde());
+		request.setAttribute("collum", yatzy.getPlayerTurn());
+		
 		//Terninger
 		int[] terninger = yatzy.getTerningArray();
 		request.setAttribute("terninger", terninger);
+		
+		
 
 		request.getRequestDispatcher("WEB-INF/jsp/spillSpill.jsp").forward(request, response);
 
