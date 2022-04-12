@@ -56,7 +56,7 @@ public class SpillServlet extends HttpServlet {
 		request.setAttribute("rowInfo", rowInfo);
 		
 		//Terninger
-		int[] terninger = {1,2,3,4,5};
+		int[] terninger = yatzy.getTerningArray();
 		request.setAttribute("terninger", terninger);
 
 		request.getRequestDispatcher("WEB-INF/jsp/spillSpill.jsp").forward(request, response);
@@ -98,7 +98,7 @@ public class SpillServlet extends HttpServlet {
 		}
 		
 		
-		
+		//get dices
 		String[] names = request.getParameterValues("dices");
 		
 		int[] diceVal = new int[names.length];
@@ -106,6 +106,8 @@ public class SpillServlet extends HttpServlet {
 			diceVal[i] = Integer.parseInt(names[i].substring(4));
 			System.out.print(diceVal[i] + " ");
 		}
+		
+		
 		
 		
 		

@@ -140,9 +140,9 @@ input#dice5[type=checkbox]:checked+label {
 		<!-- Repeat with loop -->
 		<c:forEach begin="0" end="${fn:length(terninger) - 1}" var="i">
 			<input type="checkbox" name='dices'
-				id="dice<c:out value="${terninger[i]}" />"
+				id="dice<c:out value="${i+1}" />"
 				value="dice<c:out value="${terninger[i]}" />" />
-			<label for="dice<c:out value="${terninger[i]}" />"
+			<label for="dice<c:out value="${i+1}" />"
 				style="background-image: url('images/<c:out value="${terninger[i]}.png'" />)"></label>
 		</c:forEach>
 

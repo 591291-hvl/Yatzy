@@ -20,6 +20,7 @@ CREATE TABLE yatzy
     playerTurn INTEGER,
     turnsPlayed INTEGER,
     brett VARCHAR,
+    terninger VARCHAR,
     PRIMARY KEY (id)
 );
 

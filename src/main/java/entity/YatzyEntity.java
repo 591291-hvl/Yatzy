@@ -12,6 +12,8 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import backend.DiceShaker;
+
 
 @Entity
 @Table(name = "yatzy", schema = "yatzy")
@@ -24,6 +26,7 @@ public class YatzyEntity {
 	private Integer playerTurn;
 	private Integer turnsPlayed;
 	private String brett;
+	private String terninger;
 
 	
 	@ManyToMany
@@ -43,11 +46,15 @@ public class YatzyEntity {
 		playerTurn = 0;
 		turnsPlayed = 0;
 		brett = "";
+		terninger = "00000";
 	}
 	
 	public void startSpill() {
 		aktiv = 1;
 		createBrett();
+		DiceShaker shaker = new DiceShaker(5);
+		shaker.shakeDice();
+		terningArryToString(shaker.getDiceValue());
 	}
 	
 	public void leggTilSpiller(SpillerEntity spiller) {
@@ -124,6 +131,25 @@ public class YatzyEntity {
 		
 		return brettString;
 	}
+	
+	public int[] getTerningArray() {
+		String[] terningArray = terninger.split("");
+		int[] intTerningArray = new int[terningArray.length];
+		
+		for(int i = 0; i < terningArray.length; i++) {
+			intTerningArray[i] = Integer.parseInt(terningArray[i]);
+		}
+		return intTerningArray;
+		
+	}
+	
+	public void terningArryToString(int[] terninger) {
+		String terningString = "";
+		for(int i = 0; i < terninger.length; i++) {
+			terningString += terninger[i] +"";
+		}
+		this.terninger = terningString;
+	}
 
 	
 
@@ -183,6 +209,14 @@ public class YatzyEntity {
 
 	public void setTurnsPlayed(Integer turnsPlayed) {
 		this.turnsPlayed = turnsPlayed;
+	}
+
+	public String getTerninger() {
+		return terninger;
+	}
+
+	public void setTerninger(String terninger) {
+		this.terninger = terninger;
 	}
 	
 }
