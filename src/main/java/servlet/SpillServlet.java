@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import backend.Board;
+import backend.RoundUtils;
 import dao.SpillerDAO;
 import dao.YatzyDAO;
 import entity.SpillerEntity;
@@ -126,11 +127,31 @@ public class SpillServlet extends HttpServlet {
 			Yatzy yatzyGame = new Yatzy(yatzy.toArray());
 			yatzyGame.gameLogic(yatzy.getPlayerTurn(), yatzy.getRunde()+1, yatzy.getTerningArray());
 			yatzy.toArrayString(yatzyGame.getBoard().getBoard());
-			yatzy.setRunde(yatzy.getRunde()+1);
+			
+			//skip sum and bonus
+			if(yatzy.getRunde() == 6) {
+				//set bonus val
+				yatzyGame.getBoard().setValue(yatzy.getPlayerTurn(), 7, RoundUtils.bonus(RoundUtils.firstSum(yatzy.getPlayerTurn(), yatzyGame.getBoard())));
+				yatzy.setRunde(8);
+			}
+			
+			//update totals
+			yatzyGame.getBoard().setValue(yatzy.getPlayerTurn(), 6, RoundUtils.firstSum(yatzy.getPlayerTurn(), yatzyGame.getBoard()));
+			yatzyGame.getBoard().setValue(yatzy.getPlayerTurn(), 17, RoundUtils.totalSum(yatzy.getPlayerTurn(), yatzyGame.getBoard()));
+			yatzy.toArrayString(yatzyGame.getBoard().getBoard());
 			//player turn
 			yatzy.setTurnsPlayed(0);
-			yatzy.setPlayerTurn(yatzy.getPlayerTurn() + 1 % yatzy.getAntall());
+			yatzy.setPlayerTurn(yatzy.getPlayerTurn() + 1);
+			if(yatzy.getPlayerTurn() == yatzy.getAntall()) {
+				yatzy.setPlayerTurn(0);
+				yatzy.setRunde(yatzy.getRunde()+1);
+			}
+			
+			//reset dice
+			diceVal = new int[0];
+			yatzy.trillTerning(yatzy.getTerningArray(), diceVal);
 		}
+		
 		
 		yatzyDao.update(yatzy);
 		
