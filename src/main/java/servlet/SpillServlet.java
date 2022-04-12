@@ -84,6 +84,13 @@ public class SpillServlet extends HttpServlet {
 		//after reciving 2 times, game needs to update value in table
 		//and then change playing user
 		
+		String[] names = request.getParameterValues("dices");
+		
+		int[] diceVal = new int[names.length];
+		for(int i = 0; i < names.length; i++) {
+			diceVal[i] = Integer.parseInt(names[i].substring(4));
+		}
+		
 		response.sendRedirect("SpillServlet");
 	}
 

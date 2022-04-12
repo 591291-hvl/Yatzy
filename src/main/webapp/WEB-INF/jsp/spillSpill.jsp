@@ -16,7 +16,7 @@ input[type=checkbox] {
 input#dice1[type=checkbox]+label {
 	background-repeat: no-repeat;
 	background-size: cover;
-	border-color: white;
+	border-color: Black;
 	border-style: solid;
 	height: 50px;
 	width: 50px;
@@ -27,7 +27,7 @@ input#dice1[type=checkbox]+label {
 input#dice2[type=checkbox]+label {
 	background-repeat: no-repeat;
 	background-size: cover;
-	border-color: white;
+	border-color: Black;
 	border-style: solid;
 	height: 50px;
 	width: 50px;
@@ -38,7 +38,7 @@ input#dice2[type=checkbox]+label {
 input#dice3[type=checkbox]+label {
 	background-repeat: no-repeat;
 	background-size: cover;
-	border-color: white;
+	border-color: Black;
 	border-style: solid;
 	height: 50px;
 	width: 50px;
@@ -49,7 +49,7 @@ input#dice3[type=checkbox]+label {
 input#dice4[type=checkbox]+label {
 	background-repeat: no-repeat;
 	background-size: cover;
-	border-color: white;
+	border-color: Black;
 	border-style: solid;
 	height: 50px;
 	width: 50px;
@@ -60,7 +60,7 @@ input#dice4[type=checkbox]+label {
 input#dice5[type=checkbox]+label {
 	background-repeat: no-repeat;
 	background-size: cover;
-	border-color: white;
+	border-color: Black;
 	border-style: solid;
 	height: 50px;
 	width: 50px;
@@ -139,7 +139,7 @@ input#dice5[type=checkbox]:checked+label {
 
 		<!-- Repeat with loop -->
 		<c:forEach begin="0" end="${fn:length(terninger) - 1}" var="i">
-			<input type="checkbox" name='dice<c:out value="${terninger[i]}" />'
+			<input type="checkbox" name='dices'
 				id="dice<c:out value="${terninger[i]}" />"
 				value="dice<c:out value="${terninger[i]}" />" />
 			<label for="dice<c:out value="${terninger[i]}" />"
