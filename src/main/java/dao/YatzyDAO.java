@@ -42,5 +42,9 @@ public class YatzyDAO {
 	public boolean spillFinnes(Integer spillID) {
 		return finnSpillID(spillID) != null;
 	}
+	
+	public Integer finnSpillerTur(Integer spillID) {
+		return finnSpillID(spillID).getPlayerTurn();
+	}
 
 }

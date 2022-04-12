@@ -84,6 +84,21 @@ public class SpillServlet extends HttpServlet {
 		//after reciving 2 times, game needs to update value in table
 		//and then change playing user
 		
+		SpillerEntity spiller = (SpillerEntity) request.getSession().getAttribute("spiller");
+		int yatzyID = (int) request.getSession().getAttribute("yatzyID");
+		YatzyEntity yatzy = yatzyDao.finnSpillID(yatzyID);
+		
+		//check if correct player sendt inn
+		if(!yatzy.getSpillere().get(yatzyDao.finnSpillerTur(yatzyID)).getBrukernavn().equals(spiller.getBrukernavn())) {
+			//wrong player sendt inn
+			//send error message
+			
+			response.sendRedirect("SpillServlet");
+			return;
+		}
+		
+		
+		
 		String[] names = request.getParameterValues("dices");
 		
 		int[] diceVal = new int[names.length];
@@ -91,6 +106,8 @@ public class SpillServlet extends HttpServlet {
 			diceVal[i] = Integer.parseInt(names[i].substring(4));
 			System.out.print(diceVal[i] + " ");
 		}
+		
+		
 		
 		response.sendRedirect("SpillServlet");
 	}

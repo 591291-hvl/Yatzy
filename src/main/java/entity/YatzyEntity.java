@@ -40,6 +40,8 @@ public class YatzyEntity {
 	public void opprettSpill() {
 		antall = 0;
 		aktiv = 0;
+		playerTurn = 0;
+		turnsPlayed = 0;
 		brett = "";
 	}
 	
@@ -165,6 +167,22 @@ public class YatzyEntity {
 
 	public void setAktiv(Integer aktiv) {
 		this.aktiv = aktiv;
+	}
+
+	public Integer getPlayerTurn() {
+		return playerTurn;
+	}
+
+	public void setPlayerTurn(Integer playerTurn) {
+		this.playerTurn = playerTurn;
+	}
+
+	public Integer getTurnsPlayed() {
+		return turnsPlayed;
+	}
+
+	public void setTurnsPlayed(Integer turnsPlayed) {
+		this.turnsPlayed = turnsPlayed;
 	}
 	
 }
