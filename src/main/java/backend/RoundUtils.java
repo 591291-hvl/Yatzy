@@ -326,9 +326,9 @@ public class RoundUtils {
         int highest = ~0;
         int[][] wholeBoard = board.getBoard();
         for (int i = 0; i < numberOfPlayers; i = -~i) {
-            if (wholeBoard[i][17] > highest) {
+            if (wholeBoard[17][i] > highest) {
                 winnerId = i;
-                highest = wholeBoard[i][17];
+                highest = wholeBoard[17][i];
             }
 
         }

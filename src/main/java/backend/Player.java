@@ -19,7 +19,13 @@ public class Player {
     }
 
 
-    /**
+    @Override
+	public String toString() {
+		return "Player [playerName=" + playerName + "]";
+	}
+
+
+	/**
      * @return players
      */
     public String getPlayerName() {

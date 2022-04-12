@@ -89,6 +89,7 @@ public class SpillServlet extends HttpServlet {
 		int[] diceVal = new int[names.length];
 		for(int i = 0; i < names.length; i++) {
 			diceVal[i] = Integer.parseInt(names[i].substring(4));
+			System.out.print(diceVal[i] + " ");
 		}
 		
 		response.sendRedirect("SpillServlet");

@@ -40,7 +40,7 @@ public class Board {
      */
     public Board(int numberOfPlayers) {
 
-        this.board = new int[numberOfPlayers][18];
+        this.board = new int[18][numberOfPlayers];
         this.numberOfPlayers = numberOfPlayers;
 
     }
@@ -60,7 +60,7 @@ public class Board {
      * @param newValue new value in cell
      */
     public void setValue(int id, int round, int newValue) {
-        board[id][round] = newValue;
+        board[round][id] = newValue;
     }
 
     /**
@@ -68,7 +68,11 @@ public class Board {
      * @return board of a player with id
      */
     public int[] getPlayerBoard(int player) {
-        return board[player];
+    	int[] playerBoard = new int[18];
+    	for(int i = 0; i < playerBoard.length; i++) {
+    		playerBoard[i] = board[i][player];
+    	}
+        return playerBoard;
     }
 
     /**
@@ -87,15 +91,15 @@ public class Board {
         for (int i = 0; i < 18; i = -~i) {
             outString += String.format("%-20s", rowInfo[i]);
             for (int j = 0; j < numberOfPlayers; j = -~j) {
-                if (board[j][i] == 0) {
+                if (board[i][j] == 0) {
                     outString += String.format("%-10s", "-");
                     continue;
                 }
-                if (board[j][i] == ~0) {
+                if (board[i][j] == ~0) {
                     outString += String.format("%-10s", 0);
                     continue;
                 }
-                outString += String.format("%-10s", board[j][i]);
+                outString += String.format("%-10s", board[i][j]);
             }
             outString += "\n";
         }
