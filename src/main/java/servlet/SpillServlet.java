@@ -104,6 +104,11 @@ public class SpillServlet extends HttpServlet {
 			return;
 		}
 		
+		//Stopp om spill ikke er aktivt
+		if(yatzy.getAktiv() != 1) {
+			response.sendRedirect("SpillServlet");
+			return;
+		}
 		
 		//get dices
 		String[] names = request.getParameterValues("dices");
@@ -134,12 +139,7 @@ public class SpillServlet extends HttpServlet {
 			yatzyGame.gameLogic(yatzy.getPlayerTurn(), yatzy.getRunde()+1, yatzy.getTerningArray());
 			yatzy.toArrayString(yatzyGame.getBoard().getBoard());
 			
-			//skip sum and bonus
-			if(yatzy.getRunde() == 6) {
-				//set bonus val
-				yatzyGame.getBoard().setValue(yatzy.getPlayerTurn(), 7, RoundUtils.bonus(RoundUtils.firstSum(yatzy.getPlayerTurn(), yatzyGame.getBoard())));
-				yatzy.setRunde(8);
-			}
+
 			
 			//update totals
 			yatzyGame.getBoard().setValue(yatzy.getPlayerTurn(), 6, RoundUtils.firstSum(yatzy.getPlayerTurn(), yatzyGame.getBoard()));
@@ -148,14 +148,29 @@ public class SpillServlet extends HttpServlet {
 			//player turn
 			yatzy.setTurnsPlayed(0);
 			yatzy.setPlayerTurn(yatzy.getPlayerTurn() + 1);
+			
 			if(yatzy.getPlayerTurn() == yatzy.getAntall()) {
 				yatzy.setPlayerTurn(0);
-				yatzy.setRunde(yatzy.getRunde()+1);
+				//skip sum and bonus
+				if(yatzy.getRunde() == 5) {
+					//set bonus val
+					yatzyGame.getBoard().setValue(yatzy.getPlayerTurn(), 7, RoundUtils.bonus(RoundUtils.firstSum(yatzy.getPlayerTurn(), yatzyGame.getBoard())));
+					yatzy.setRunde(8);
+				}else {
+					yatzy.setRunde(yatzy.getRunde()+1);
+				}
+
 			}
+			
 			
 			//reset dice
 			diceVal = new int[0];
 			yatzy.trillTerning(yatzy.getTerningArray(), diceVal);
+			
+			// stopp på runde 18
+			if(yatzy.getRunde() >= 17) {
+				yatzy.setAktiv(0);
+			}
 		}
 		
 		

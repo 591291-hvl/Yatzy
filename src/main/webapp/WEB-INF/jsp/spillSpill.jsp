@@ -129,40 +129,44 @@ input#dice5[type=checkbox]:checked+label {
 			<tr>
 				<td><c:out value="${rowInfo[i]}" /></td>
 				<c:forEach begin="0" end="${fn:length(brett[i]) - 1}" var="j">
-				
-				<c:choose>
-				<c:when test="${row eq i and collum eq j}">
-				<td bgcolor="#aaffaa"><c:out value="${brett[i][j]}" /></td>
-				</c:when>
-				<c:otherwise>
-				<td><c:out value="${brett[i][j]}" /></td>
-				</c:otherwise>
-				</c:choose>
-				
-					
-				
-				
+
+					<c:choose>
+						<c:when test="${row eq i and collum eq j}">
+							<td bgcolor="#aaffaa"><c:out value="${brett[i][j]}" /></td>
+						</c:when>
+						<c:otherwise>
+							<c:if test="${brett[i][j] eq -1}">
+								<td>-</td>
+							</c:if>
+							<c:if test="${brett[i][j] ne -1}">
+								<td><c:out value="${brett[i][j]}" /></td>
+							</c:if>
+						</c:otherwise>
+					</c:choose>
+
 				</c:forEach>
 			</tr>
 		</c:forEach>
 	</table>
 
-	<form method="post">
+	<c:if test="${row le 16}">
+		<form method="post">
 
-		<!-- Repeat with loop -->
-		<c:forEach begin="0" end="${fn:length(terninger) - 1}" var="i">
-			<input type="checkbox" name='dices'
-				id="dice<c:out value="${i+1}" />"
-				value="dice<c:out value="${i+1}" />" />
-			<label for="dice<c:out value="${i+1}" />"
-				style="background-image: url('images/<c:out value="${terninger[i]}.png'" />)"></label>
-		</c:forEach>
+			<!-- Repeat with loop -->
+			<c:forEach begin="0" end="${fn:length(terninger) - 1}" var="i">
+				<input type="checkbox" name='dices'
+					id="dice<c:out value="${i+1}" />"
+					value="dice<c:out value="${i+1}" />" />
+				<label for="dice<c:out value="${i+1}" />"
+					style="background-image: url('images/<c:out value="${terninger[i]}.png'" />)"></label>
+			</c:forEach>
 
-	<button type="submit" name="btn" value="btnStart" class="pure-button pure-button-primary">Behold terninger</button>
-		
+			<button type="submit" name="btn" value="btnStart"
+				class="pure-button pure-button-primary">Behold terninger</button>
 
-	</form>
 
+		</form>
+	</c:if>
 
 </body>
 </html>
